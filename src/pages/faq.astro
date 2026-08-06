@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+const faqs = [
+  ["Do I need a visa?", "Most foreign visitors need a Chinese visa (L tourist visa). Qingdao also offers 144-hour visa-free transit for eligible nationalities arriving at Qingdao Liuting Airport and departing to a third country. Check the latest 144-hour policy before booking since eligible nationalities change periodically."],
+  ["How do I pay?", "Alipay and WeChat Pay dominate. Both now support linking foreign credit cards (Visa, Mastercard). Set up Alipay before arriving. Cash is still accepted but increasingly rare."],
+  ["Do I need a VPN?", "Yes. Google, Gmail, Instagram, WhatsApp, Facebook, and many Western sites are blocked in China. Install a VPN on all devices before arriving. ExpressVPN, NordVPN, and Astrill are commonly recommended. Test before your flight."],
+  ["Is Qingdao safe?", "Very safe. Violent crime against tourists is extremely rare. Main risks: taxi scams at the airport (use Didi), pickpocketing in crowded areas during Beer Festival, and electric scooters on sidewalks."],
+  ["Can I use English?", "Limited. Hotel front desks and major tourist attractions usually have some English. Download Google Translate with offline Chinese. Screenshot key phrases before you go."],
+  ["What is the best time to visit?", "May-June and September-October for the best weather. July-August is peak season (hot, humid, Beer Festival). November-April is off-season: cold but hotels 50-70% cheaper."],
+  ["How do I get from the airport to the city?", "Option 1: Metro Line 8 (40 min, \u00A57). Option 2: Airport shuttle bus (60 min, \u00A520). Option 3: Didi (45 min, \u00A5100-150). Avoid street taxis at arrivals."],
+  ["What should I pack?", "Comfortable walking shoes. Sunscreen. VPN pre-installed. Power adapter (Type A/C/I, 220V). Tissues and hand sanitizer (public toilets lack paper). Imodium. Copies of passport and visa."],
+  ["Can I drink the tap water?", "No. Bottled water is cheap and widely available. Most hotels provide complimentary bottled water. Restaurants serve boiled water or tea (safe)."],
+  ["Is the Beer Festival worth it?", "Depends on what you want. It is Asia's largest beer festival with dozens of brewery pavilions, carnival rides, and live music. If you love beer culture, it is an experience. If you dislike crowds and inflated prices, visit outside August."],
+
+  ["I have dietary restrictions. Can I eat in Qingdao?", "Vegetarian: Buddhism-influenced temple restaurants serve excellent vegetarian food. Look for su shi signs. Street food and hot pot broths often contain meat stock. Show this: wo chi su (I eat vegetarian). Halal: Qingdao has a Muslim quarter near the train station with halal-certified Lanzhou noodle shops. Look for qing zhen signs. Gluten-free: Very difficult. Soy sauce contains wheat. Rice and plain stir-fries are safest."],
+  ["How do I order if the menu has no English?", "Three strategies: (1) Google Translate camera mode scans Chinese menus in real time. (2) Look at other tables and say wo yao zhe ge (I want this one) while pointing. (3) Most tourist-area restaurants have picture menus. Screenshots from Dianping (Chinese Yelp) also work: show the photo to the waiter."],
+  ["Should I tip?", "No. Tipping is not part of Chinese culture and may be politely refused. Restaurant bills include service. Taxi drivers and hotel staff do not expect tips. The only exception: high-end international hotels where Western tipping customs sometimes apply."],
+  ["What are public toilets like?", "Mixed. Malls and modern attractions have clean Western-style toilets. Street-side public toilets are squat-style and rarely have toilet paper or soap. Always carry pocket tissues and hand sanitizer. Look for WC signs. Hotels, Starbucks, and McDonald's are reliable toilet stops."],
+  ["Is Qingdao safe for solo female travelers?", "Very safe by global standards. Violent crime against tourists is extremely rare. Standard precautions: avoid walking alone on deserted beaches after dark, use Didi (not street taxis) at night, and book hotels with 24-hour front desk. Qingdao women are independent and outgoing — you will not stand out as a solo female traveler."],
+  ["How do I deal with the language barrier in restaurants?", "Beyond pointing and Google Translate: download Pleco (the best Chinese-English dictionary app). Take photos of dishes you liked to show at other restaurants. Learn food characters: ji (chicken), niu (beef), yu (fish), dan (egg), mian (noodles). Waiters will appreciate any effort."],
+];
+---
+<Layout title="Qingdao FAQ — Visa, Payment, Safety & More" description="Frequently asked questions about visiting Qingdao. Visa, payment, VPN, safety, language, best time to visit, and practical tips for travelers." pageType="FAQ" faqItems={faqs}>
+  <section class="section">
+    <div class="container">
+      <p class="tag mb-3">FAQ</p>
+      <h1 class="mb-2">Frequently Asked Questions</h1>
+      <p class="body-lg mb-10 max-w-[65ch]">Everything first-time visitors ask. From visas and payments to safety and what to pack.</p>
+
+      <!-- FAQ grid -->
+      <div class="grid md:grid-cols-2 gap-4 mb-12">
+        {faqs.map(([q, a]) => (
+          <details class="card group p-5 cursor-pointer">
+            <summary class="font-medium text-sm pr-6 relative marker:content-none">
+              {q}
+              <span class="absolute right-0 top-1/2 -translate-y-1/2 text-[var(--color-text-tertiary)] text-lg leading-none group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="caption mt-3 leading-relaxed">{a}</p>
+          </details>
+        ))}
+      </div>
+
+      <!-- SIM Card Comparison -->
+      <div class="card p-6 md:p-8 mb-10">
+        <h2 class="h3 mb-2">SIM Card & eSIM Comparison</h2>
+        <p class="caption mb-6">Which option is right for your Qingdao trip?</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 px-3 font-semibold"></th><th class="text-left py-2 px-3 font-semibold">Airport SIM</th><th class="text-left py-2 px-3 font-semibold">eSIM (Airalo/Nomad)</th><th class="text-left py-2 px-3 font-semibold">China Unicom Store</th></tr></thead>
+            <tbody>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Price</td><td class="py-2 px-3">~&#165;100 for 20GB</td><td class="py-2 px-3">$8-25 for 3-10GB</td><td class="py-2 px-3">&#165;50-150/month</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Setup</td><td class="py-2 px-3">Buy at airport kiosk</td><td class="py-2 px-3 text-[var(--color-accent)] font-medium">Activate before departure</td><td class="py-2 px-3">Visit store with passport</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">VPN needed?</td><td class="py-2 px-3">Yes</td><td class="py-2 px-3 text-[var(--color-accent)] font-medium">Usually no</td><td class="py-2 px-3">Yes</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Local number</td><td class="py-2 px-3">Yes</td><td class="py-2 px-3">No (data only)</td><td class="py-2 px-3">Yes</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Best for</td><td class="py-2 px-3">2+ week trips</td><td class="py-2 px-3 text-[var(--color-accent)] font-medium">Short trips (1-7 days)</td><td class="py-2 px-3">Long stays</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="caption mt-4">Recommendation: eSIM for short trips (land connected). Airport SIM for 2+ weeks. Both for redundancy.</p>
+      </div>
+
+      <div class="flex gap-4">
+        <a href="/first-hour" class="btn-outline">First Hour Guide</a>
+        <a href="/qingdao-transportation" class="btn-ghost">Transportation Guide</a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,262 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  pageType?: string;
+  noindex?: boolean;
+  faqItems?: [string, string][];
+}
+
+const {
+  title,
+  description,
+  ogImage = "https://qingdao-shi-china.com/images/qingdao-og.webp",
+  pageType = "TouristDestination",
+  noindex = false,
+  faqItems = [],
+} = Astro.props;
+
+const defaultTitle = "Qingdao China — Travel Guide, Weather & Itineraries";
+const defaultDescription = "Plan your Qingdao trip: 2-5 day itineraries, weather forecasts, top attractions, Tsingtao beer tours, maps & practical travel tips.";
+
+const siteUrl = "https://qingdao-shi-china.com";
+const currentUrl = siteUrl + Astro.url.pathname;
+const isHomepage = Astro.url.pathname === "/";
+const resolvedTitle = title || defaultTitle;
+const resolvedDescription = description || defaultDescription;
+const ogTitle = resolvedTitle;
+
+const schemaTypeMap: Record<string, string> = {
+  "TouristDestination": "TouristDestination",
+  "FAQ": "FAQPage",
+  "FAQPage": "FAQPage",
+  "Article": "Article",
+  "WebApplication": "WebApplication",
+  "WebPage": "WebPage",
+  "CollectionPage": "CollectionPage",
+};
+
+const schema: Record<string, any> = {
+  "@context": "https://schema.org",
+  "@type": schemaTypeMap[pageType] || "WebPage",
+  "name": resolvedTitle,
+  "description": resolvedDescription,
+  "url": currentUrl,
+};
+
+if (pageType === "FAQ" && faqItems.length > 0) {
+  schema.mainEntity = faqItems.map(([q, a]) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a },
+  }));
+} else if (pageType === "FAQ") {
+  schema.mainEntity = [];
+}
+if (pageType === "TouristDestination") {
+  schema.address = { "@type": "PostalAddress", "addressLocality": "Qingdao", "addressRegion": "Shandong", "addressCountry": "CN" };
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{ogTitle}</title>
+  <meta name="description" content={resolvedDescription} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  {!noindex && <link rel="canonical" href={currentUrl} />}
+  {!noindex && <link rel="alternate" hreflang="en" href={currentUrl} />}
+  {!noindex && <link rel="alternate" hreflang="x-default" href={currentUrl} />}
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={ogTitle} />
+  <meta property="og:description" content={resolvedDescription} />
+  <meta property="og:url" content={currentUrl} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Qingdao Travel Guide" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ogTitle} />
+  <meta name="twitter:description" content={resolvedDescription} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": (() => {
+      const segments = Astro.url.pathname.split("/").filter(Boolean);
+      if (segments.length === 0) return [];
+      const items = [{ "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl + "/" }];
+      let path = "";
+      segments.forEach((seg, i) => {
+        path += "/" + seg;
+        const name = seg.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase());
+        items.push({ "@type": "ListItem", "position": i + 2, "name": name, "item": siteUrl + path });
+      });
+      return items;
+    })(),
+  })}></script>
+
+  <!-- Preload font -->
+  <link rel="preload" href="/_astro/geist.woff2" as="font" type="font/woff2" crossorigin />
+</head>
+<body class="min-h-dvh flex flex-col">
+  <!-- Skip to content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[var(--color-accent)] focus:text-white focus:rounded-lg focus:outline-none">Skip to content</a>
+
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 bg-[var(--color-bg)]/80 backdrop-blur-md border-b border-[var(--color-border)]">
+    <nav class="container flex items-center justify-between h-16">
+      <a href="/" class="font-semibold text-lg tracking-tight text-[var(--color-text)] shrink-0">
+        Qingdao Guide
+      </a>
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-6" id="desktop-nav">
+        <a href="/qingdao-travel-guide" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">Travel Guide</a>
+        <a href="/qingdao-itineraries/3-days" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">Itineraries</a>
+        <a href="/qingdao-weather" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">Weather</a>
+        <a href="/faq" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">FAQ</a>
+      </div>
+      <!-- Mobile menu button -->
+      <button class="md:hidden p-2 -mr-2" aria-label="Toggle menu" id="menu-toggle" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" id="menu-icon-open" aria-hidden="true">
+          <path d="M3 5h14M3 10h14M3 15h14"/>
+        </svg>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" id="menu-icon-close" class="hidden" aria-hidden="true">
+          <path d="M5 5l10 10M15 5l-10 10"/>
+        </svg>
+      </button>
+    </nav>
+    <!-- Mobile nav overlay -->
+    <div id="mobile-nav" class="hidden md:hidden border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+      <div class="container py-4 flex flex-col gap-2">
+        <a href="/qingdao-travel-guide" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Travel Guide</a>
+        <a href="/qingdao-itineraries/3-days" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Itineraries</a>
+        <a href="/qingdao-weather" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Weather</a>
+        <a href="/qingdao-beer" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Beer Tour</a>
+        <a href="/qingdao-routes" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Routes</a>
+        <a href="/qingdao-transportation" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Transport</a>
+        <a href="/faq" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">FAQ</a>
+        <a href="/first-hour" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors font-medium text-[var(--color-accent)]">First Hour Guide</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="flex-1">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+    <div class="container py-12 md:py-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <h4 class="text-sm font-semibold mb-3">Explore</h4>
+          <div class="flex flex-col gap-2">
+            <a href="/qingdao-travel-guide" class="caption hover:text-[var(--color-text)] transition-colors">Travel Guide</a>
+            <a href="/qingdao-weather" class="caption hover:text-[var(--color-text)] transition-colors">Weather</a>
+            <a href="/#attractions" class="caption hover:text-[var(--color-text)] transition-colors">Attractions</a>
+            <a href="/qingdao-beer" class="caption hover:text-[var(--color-text)] transition-colors">Beer Tour</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold mb-3">Plan</h4>
+          <div class="flex flex-col gap-2">
+            <a href="/qingdao-itineraries/2-days" class="caption hover:text-[var(--color-text)] transition-colors">2-Day Trip</a>
+            <a href="/qingdao-itineraries/3-days" class="caption hover:text-[var(--color-text)] transition-colors">3-Day Trip</a>
+            <a href="/qingdao-itineraries/5-days" class="caption hover:text-[var(--color-text)] transition-colors">5-Day Trip</a>
+            <a href="/qingdao-transportation" class="caption hover:text-[var(--color-text)] transition-colors">Transportation</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold mb-3">Routes</h4>
+          <div class="flex flex-col gap-2">
+            <a href="/qingdao-routes/walking" class="caption hover:text-[var(--color-text)] transition-colors">Walking Tour</a>
+            <a href="/qingdao-routes/cycling" class="caption hover:text-[var(--color-text)] transition-colors">Cycling Route</a>
+            <a href="/qingdao-routes/driving" class="caption hover:text-[var(--color-text)] transition-colors">Driving Route</a>
+            <a href="/qingdao-routes/photography" class="caption hover:text-[var(--color-text)] transition-colors">Photo Spots</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold mb-3">Help</h4>
+          <div class="flex flex-col gap-2">
+            <a href="/faq" class="caption hover:text-[var(--color-text)] transition-colors">FAQ</a>
+            <a href="/first-hour" class="caption font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors">First Hour Guide</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="caption">Qingdao Travel Guide &copy; 2026. Made for independent travelers.</p>
+        <p class="caption">qingdao-shi-china.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-[var(--color-accent)] text-white shadow-lg flex items-center justify-center opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:bg-[var(--color-accent-hover)]" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 15V3M4 8l5-5 5 5"/></svg>
+  </button>
+
+  <script>
+    const btt = document.getElementById('back-to-top');
+    if (btt) {
+      window.addEventListener('scroll', () => {
+        const show = window.scrollY > 400;
+        btt.classList.toggle('opacity-0', !show);
+        btt.classList.toggle('translate-y-4', !show);
+        btt.classList.toggle('pointer-events-none', !show);
+      });
+      btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    // Active nav state
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('nav a, #mobile-nav a').forEach(link => {
+      const href = (link as HTMLAnchorElement).getAttribute('href');
+      if (href && (href === currentPath || (href !== '/' && currentPath.startsWith(href)))) {
+        link.classList.add('text-[var(--color-accent)]', 'font-medium');
+      }
+    });
+  </script>
+</body>
+</html>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
+
+  if (toggle && mobileNav && openIcon && closeIcon) {
+    toggle.addEventListener('click', () => {
+      const isOpen = !mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden', isOpen);
+      openIcon.classList.toggle('hidden', !isOpen);
+      closeIcon.classList.toggle('hidden', isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Close mobile nav when clicking a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>

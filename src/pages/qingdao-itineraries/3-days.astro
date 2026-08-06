@@ -1,0 +1,67 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const days = [
+  {
+    day: "Day 1", theme: "Old Town & German Heritage",
+    slots: [
+      ["09:00", "Zhanqiao Pier", "Iconic pier, views of the Old Town skyline. Free, 1 hour."],
+      ["10:30", "St. Michael's Cathedral", "Neo-Romanesque twin spires. Entry ¥10.", "Busy during Sunday mass."],
+      ["12:00", "Lunch at Pichai Yuan", "Grilled squid, Qingdao potstickers. Budget ¥30-50."],
+      ["14:00", "Badaguan Scenic Area", "German villas, tree-lined streets. Free, 2 hours."],
+      ["17:00", "Huiquan Bay sunset", "Walk to the beach for golden hour. Free."],
+      ["19:00", "Dinner on Yunxiao Road", "Seafood street with dozens of restaurants."],
+    ]
+  },
+  {
+    day: "Day 2", theme: "Beer Culture & Modern Qingdao",
+    slots: [
+      ["09:00", "Tsingtao Beer Museum", "The main event. Original 1903 brewery. ¥60-80, 2 hours."],
+      ["11:30", "Dengzhou Lu Beer Street", "Outdoor lunch with fresh draft Tsingtao."],
+      ["14:00", "May Fourth Square", "Modern city center, red sculpture, seaside promenade. Free."],
+      ["15:30", "Olympic Sailing Center", "2008 Olympic marina. 10-min walk east.", "Boat rides available for ¥50-100."],
+      ["17:00", "Golden Beach (Huangdao)", "Cross-bay ferry to the best sand beach. Ferry ¥30."],
+      ["19:30", "Dinner in Huangdao", "Pick-your-own seafood restaurants."],
+    ]
+  },
+  {
+    day: "Day 3", theme: "Laoshan & Scenic Views",
+    slots: [
+      ["08:00", "Laoshan Mountain", "Take bus 304 or Didi (40 min from city). ¥130 entry. Hike the Taiqing scenic route. 4-5 hours.", "Start early, the mountain gets crowded by 10am."],
+      ["13:00", "Lunch at a mountain tea house", "Laoshan green tea and simple noodles with mountain views."],
+      ["15:00", "Old Stone Man Beach", "On the way back from Laoshan. Quiet beach with a famous rock formation."],
+      ["17:30", "Qingdao TV Tower", "Optional: panoramic city views from the observation deck. ¥50."],
+      ["19:00", "Farewell dinner at Chunhelou", "Classic Shandong cuisine. Try the sweet and sour carp and jiaozi dumplings."],
+    ]
+  }
+];
+---
+<Layout title="Qingdao 3-Day Itinerary — Best Trip Plan" description="The classic Qingdao 3-day plan. Old Town, Tsingtao Beer Museum, Golden Beach, Laoshan Mountain. Day-by-day with times and tips." pageType="Article">
+  <section class="section">
+    <div class="container">
+      <p class="tag mb-3">Itinerary</p>
+      <h1 class="mb-2">3-Day Qingdao Itinerary</h1>
+      <p class="body-lg mb-10 max-w-[65ch]">The classic Qingdao experience. This is our most popular itinerary, balancing Old Town charm, beer culture, and natural scenery across three well-paced days.</p>
+      {days.map(d => (
+        <div class="mb-12">
+          <h2 class="h3 mb-6">{d.day}: {d.theme}</h2>
+          <div class="flex flex-col gap-4">
+            {d.slots.map(([time, title, desc, alt]) => (
+              <div class="card p-5 flex flex-col md:flex-row gap-4">
+                <div class="shrink-0 w-12 text-sm font-mono font-semibold text-[var(--color-accent)]">{time}</div>
+                <div class="flex-1">
+                  <h4 class="font-semibold mb-1">{title}</h4>
+                  <p class="caption">{desc}</p>
+                  {alt && <p class="caption mt-2 italic">Tip: {alt}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      <div class="mt-10 flex gap-4">
+        <a href="/qingdao-itineraries/5-days" class="btn-outline">Extend to 5 Days</a>
+        <a href="/qingdao-travel-guide" class="btn-ghost">Back to Travel Guide</a>
+      </div>
+    </div>
+  </section>
+</Layout>

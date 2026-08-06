@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Qingdao Travel Guide 2026 — Itineraries, Budget & Tips" description="Plan your Qingdao trip with our complete guide. Top attractions, budget estimates, where to stay, what to eat, and local tips for first-time visitors." pageType="Article">
+  <section class="section">
+    <div class="container">
+      <p class="tag mb-3">Travel Guide</p>
+      <h1 class="mb-6">Qingdao Travel Guide</h1>
+      <p class="body-lg mb-10 max-w-[65ch] leading-relaxed">Qingdao is the coastal city that made Chinese beer famous. It also happens to have beaches, German bakeries, red-tiled roofs, and the freshest seafood you will eat in China. If you are planning a trip to China and wondering whether Qingdao is worth it, this guide is for you.</p>
+
+      <!-- Budget Calculator -->
+      <div class="card p-6 md:p-8 mb-16">
+        <h2 class="h3 mb-2">Budget Estimates</h2>
+        <p class="caption mb-6">Per person. Tap a duration to see breakdown.</p>
+        <div class="flex gap-2 mb-6" id="cost-tabs">
+          <button class="btn-outline text-sm data-[active]:bg-[var(--color-accent)] data-[active]:text-white" data-budget="2" data-active>2 Days</button>
+          <button class="btn-outline text-sm data-[active]:bg-[var(--color-accent)] data-[active]:text-white" data-budget="3">3 Days</button>
+          <button class="btn-outline text-sm data-[active]:bg-[var(--color-accent)] data-[active]:text-white" data-budget="5">5 Days</button>
+        </div>
+
+        <!-- 2-Day Budget -->
+        <div class="overflow-x-auto" id="budget-2">
+          <table class="w-full text-sm border-collapse">
+            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 font-semibold">Item</th><th class="text-right py-2 font-semibold">Budget</th><th class="text-right py-2 font-semibold">Comfort</th><th class="text-right py-2 font-semibold">Premium</th></tr></thead>
+            <tbody>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Accommodation (1 night)</td><td class="py-2 text-right">$15 hostel</td><td class="py-2 text-right">$60 3-star</td><td class="py-2 text-right">$150 5-star</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Meals (6 meals)</td><td class="py-2 text-right">$30 street food</td><td class="py-2 text-right">$80 local restaurants</td><td class="py-2 text-right">$200 seafood feasts</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Transport</td><td class="py-2 text-right">$10 bus + walk</td><td class="py-2 text-right">$30 taxi + metro</td><td class="py-2 text-right">$60 private car</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Admission</td><td class="py-2 text-right">$15 mostly free</td><td class="py-2 text-right">$40 paid sites</td><td class="py-2 text-right">$80 all experiences</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Other</td><td class="py-2 text-right">$10</td><td class="py-2 text-right">$20</td><td class="py-2 text-right">$50</td></tr>
+              <tr class="border-b border-[var(--color-border)] font-bold bg-[var(--color-accent-subtle)]/30"><td class="py-2 font-semibold">TOTAL</td><td class="py-2 text-right">$80</td><td class="py-2 text-right">$230</td><td class="py-2 text-right">$540</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 3-Day Budget -->
+        <div class="overflow-x-auto hidden" id="budget-3">
+          <table class="w-full text-sm border-collapse">
+            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 font-semibold">Item</th><th class="text-right py-2 font-semibold">Budget</th><th class="text-right py-2 font-semibold">Comfort</th><th class="text-right py-2 font-semibold">Premium</th></tr></thead>
+            <tbody>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Accommodation (2 nights)</td><td class="py-2 text-right">$30</td><td class="py-2 text-right">$120</td><td class="py-2 text-right">$300</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Meals (9 meals)</td><td class="py-2 text-right">$45</td><td class="py-2 text-right">$120</td><td class="py-2 text-right">$300</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Transport</td><td class="py-2 text-right">$15</td><td class="py-2 text-right">$45</td><td class="py-2 text-right">$90</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Admission</td><td class="py-2 text-right">$25</td><td class="py-2 text-right">$60</td><td class="py-2 text-right">$120</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Other</td><td class="py-2 text-right">$15</td><td class="py-2 text-right">$30</td><td class="py-2 text-right">$70</td></tr>
+              <tr class="border-b border-[var(--color-border)] font-bold bg-[var(--color-accent-subtle)]/30"><td class="py-2 font-semibold">TOTAL</td><td class="py-2 text-right">$130</td><td class="py-2 text-right">$375</td><td class="py-2 text-right">$880</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 5-Day Budget -->
+        <div class="overflow-x-auto hidden" id="budget-5">
+          <table class="w-full text-sm border-collapse">
+            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 font-semibold">Item</th><th class="text-right py-2 font-semibold">Budget</th><th class="text-right py-2 font-semibold">Comfort</th><th class="text-right py-2 font-semibold">Premium</th></tr></thead>
+            <tbody>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Accommodation (4 nights)</td><td class="py-2 text-right">$60</td><td class="py-2 text-right">$240</td><td class="py-2 text-right">$600</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Meals (15 meals)</td><td class="py-2 text-right">$75</td><td class="py-2 text-right">$200</td><td class="py-2 text-right">$500</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Transport</td><td class="py-2 text-right">$25</td><td class="py-2 text-right">$75</td><td class="py-2 text-right">$150</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Admission</td><td class="py-2 text-right">$40</td><td class="py-2 text-right">$100</td><td class="py-2 text-right">$200</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Beer fest / boat trips</td><td class="py-2 text-right">$20</td><td class="py-2 text-right">$60</td><td class="py-2 text-right">$150</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2">Other</td><td class="py-2 text-right">$25</td><td class="py-2 text-right">$50</td><td class="py-2 text-right">$100</td></tr>
+              <tr class="border-b border-[var(--color-border)] font-bold bg-[var(--color-accent-subtle)]/30"><td class="py-2 font-semibold">TOTAL</td><td class="py-2 text-right">$245</td><td class="py-2 text-right">$725</td><td class="py-2 text-right">$1,700</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Best time -->
+      <h2 class="h3 mb-4">Best Time to Visit</h2>
+      <div class="grid md:grid-cols-3 gap-4 mb-16">
+        <div class="card p-5"><h4 class="font-semibold mb-1">Spring</h4><p class="caption">Mar-May. Cherry blossoms, mild weather, fewer crowds. Best for walking tours.</p></div>
+        <div class="card p-5"><h4 class="font-semibold mb-1">Autumn</h4><p class="caption">Sep-Oct. Golden light, blue skies, comfortable temps. Best overall season.</p></div>
+        <div class="card p-5"><h4 class="font-semibold mb-1">Summer</h4><p class="caption">Jun-Aug. Beach season, Beer Festival in August. Hot, humid, and crowded.</p></div>
+      </div>
+
+      <!-- Tips -->
+      <h2 class="h3 mb-4">Essential Tips for Foreign Visitors</h2>
+      <div class="grid md:grid-cols-2 gap-4 mb-16">
+        <div class="card p-5">
+          <h4 class="font-semibold mb-2">Visa & Entry</h4>
+          <p class="caption leading-relaxed">Most visitors need a Chinese L (tourist) visa. Apply at your nearest Chinese embassy 4–6 weeks before travel. Qingdao also offers <strong>144-hour visa-free transit</strong> for eligible nationalities if you arrive at Qingdao Airport and depart to a third country (not the same one you came from). Bring printed hotel bookings and onward ticket — immigration may ask.</p>
+        </div>
+        <div class="card p-5">
+          <h4 class="font-semibold mb-2">Payment (Critical)</h4>
+          <p class="caption leading-relaxed">China runs on <strong>Alipay and WeChat Pay</strong> — cash and cards are rarely accepted. Both now support linking foreign Visa/Mastercard. <strong>Set up Alipay before your flight:</strong> download the app, register with your passport, link your card. Test a small transaction. If verification fails, try again on hotel WiFi. See the <a href="/first-hour" class="text-[var(--color-accent)] hover:underline">First Hour Guide</a> for step-by-step setup.</p>
+        </div>
+        <div class="card p-5">
+          <h4 class="font-semibold mb-2">Internet & VPN</h4>
+          <p class="caption leading-relaxed">Google, Gmail, Instagram, WhatsApp, Facebook, and most Western sites are <strong>blocked in China</strong>. Install a reliable VPN on all devices <em>before</em> arriving — VPN websites will be unreachable once you land. ExpressVPN, Astrill, and NordVPN are commonly recommended. Test it at home before your flight. Keep a backup VPN in case one gets blocked.</p>
+        </div>
+        <div class="card p-5">
+          <h4 class="font-semibold mb-2">Language & Communication</h4>
+          <p class="caption leading-relaxed">English is limited outside hotel lobbies and major attractions. <strong>Download Google Translate with offline Chinese</strong> before arriving. Screenshot key phrases: "Please take me to..." (qing dai wo qu...), "Where is the toilet?" (cesuo zai nar), "I am allergic to..." (wo dui... guomin). See the <a href="/faq" class="text-[var(--color-accent)] hover:underline">FAQ page</a> for 10 essential phrases with pronunciation.</p>
+        </div>
+        <div class="card p-5">
+          <h4 class="font-semibold mb-2">Getting Around</h4>
+          <p class="caption leading-relaxed"><strong>Didi (ride-hailing)</strong> is the easiest option for tourists — open via Alipay, enter your destination, pay automatically. Cheaper than taxis, no language barrier. The <strong>metro</strong> covers the main city with 7 lines, bilingual signs, and fares of ¥2–7. See the full <a href="/qingdao-transportation" class="text-[var(--color-accent)] hover:underline">Transportation Guide</a> for airport transfers, train booking, and route details.</p>
+        </div>
+        <div class="card p-5">
+          <h4 class="font-semibold mb-2">Safety & Scams</h4>
+          <p class="caption leading-relaxed">Qingdao is <strong>very safe</strong> — violent crime against tourists is extremely rare. Main risks: taxi drivers overcharging at the airport (use Didi instead), pickpocketing in crowded areas during Beer Festival, and electric scooters on sidewalks. Standard precautions apply: keep valuables secure, use hotel safes, and be aware of your surroundings at night.</p>
+        </div>
+      </div>
+
+      <!-- What to Eat -->
+      <h2 class="h3 mb-4">What to Eat in Qingdao</h2>
+      <div class="card p-6 mb-16">
+        <p class="body mb-4 max-w-[65ch]">Qingdao is arguably the best seafood city in northern China. The local cuisine is Shandong-style (Lu cuisine), one of China's eight great culinary traditions. Here are the dishes you must try:</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="card p-4"><h4 class="text-sm font-semibold mb-1">Spicy Clams (辣炒蛤蜊)</h4><p class="caption">The quintessential Qingdao dish. Fresh clams stir-fried with chili, garlic, and beer. Best paired with a jin of draft Tsingtao. ¥20–40 at local restaurants.</p></div>
+          <div class="card p-4"><h4 class="text-sm font-semibold mb-2">Sweet & Sour Carp (糖醋鲤鱼)</h4><p class="caption">Shandong's signature dish. Whole Yellow River carp, deep-fried and drenched in sweet-sour sauce. Crispy outside, tender inside. ¥50–80 at Chunhelou.</p></div>
+          <div class="card p-4"><h4 class="text-sm font-semibold mb-2">Jiaozi Dumplings (饺子)</h4><p class="caption">Qingdao-style dumplings with seafood fillings: mackerel, prawn, or clam. Hand-folded and boiled. ¥15–30 per plate. Try at Pichai Yuan.</p></div>
+        </div>
+        <p class="caption mt-4">See the <a href="/" class="text-[var(--color-accent)] hover:underline">homepage food section</a> for 8 personally tested restaurant recommendations.</p>
+      </div>
+
+      <div class="text-center"><a href="/qingdao-itineraries/3-days" class="btn-primary">View 3-Day Itinerary</a></div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll("#cost-tabs button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#cost-tabs button").forEach(b => b.removeAttribute("data-active"));
+      btn.setAttribute("data-active", "");
+      const budget = btn.dataset.budget;
+      document.querySelectorAll('[id^="budget-"]').forEach(el => el.classList.add("hidden"));
+      const target = document.getElementById(`budget-${budget}`);
+      if (target) target.classList.remove("hidden");
+    });
+  });
+</script>

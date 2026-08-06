@@ -1,0 +1,114 @@
+/* ── Tailwind directives ── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ── Geist font ── */
+@import '@fontsource/geist-sans';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ── */
+:root {
+  --color-bg: #fafaf8;
+  --color-surface: #ffffff;
+  --color-text: #171717;
+  --color-text-secondary: #525252;
+  --color-text-tertiary: #737373;
+  --color-accent: #0f766e;
+  --color-accent-hover: #0d9488;
+  --color-accent-subtle: #f0fdfa;
+  --color-border: #e5e5e5;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-[var(--color-bg)] text-[var(--color-text)] font-sans leading-relaxed;
+}
+
+/* ── Typography scale ── */
+h1, .h1 { @apply text-4xl md:text-6xl tracking-tight leading-none font-bold; }
+h2, .h2 { @apply text-3xl md:text-4xl tracking-tight leading-tight font-semibold; }
+h3, .h3 { @apply text-xl md:text-2xl tracking-tight leading-snug font-semibold; }
+h4, .h4 { @apply text-lg md:text-xl font-medium; }
+p, .body { @apply text-base text-[var(--color-text-secondary)] leading-relaxed; }
+.body-lg { @apply text-lg text-[var(--color-text-secondary)] leading-relaxed; }
+.caption { @apply text-sm text-[var(--color-text-tertiary)]; }
+
+/* ── Section rhythm ── */
+.section { @apply py-16 md:py-24; }
+.section-sm { @apply py-12 md:py-16; }
+.container { @apply max-w-7xl mx-auto px-4 md:px-6; }
+.container-wide { @apply max-w-[1400px] mx-auto px-4 md:px-6; }
+
+/* ── Card (only for repeating items) ── */
+.card {
+  @apply bg-[var(--color-surface)] rounded-lg border border-[var(--color-border)] overflow-hidden;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.card:hover {
+  background-color: var(--color-accent-subtle);
+  border-color: var(--color-accent);
+}
+
+/* ── Button ── */
+.btn {
+  @apply inline-flex items-center justify-center font-medium rounded-lg
+         transition-all duration-150 px-5 py-2.5 text-sm;
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary {
+  @apply btn bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-hover)];
+}
+.btn-outline {
+  @apply btn border border-[var(--color-border)] text-[var(--color-text)]
+         hover:bg-[var(--color-accent-subtle)] hover:border-[var(--color-accent)];
+}
+.btn-ghost {
+  @apply btn text-[var(--color-text-secondary)] hover:text-[var(--color-text)]
+         hover:bg-[var(--color-accent-subtle)];
+}
+
+/* ── Tag / badge ── */
+.tag {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+         bg-[var(--color-accent-subtle)] text-[var(--color-accent)];
+}
+
+/* ── Divider ── */
+.section-divider {
+  @apply border-t border-[var(--color-border)];
+}
+
+/* ── Focus ── */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-[var(--color-accent)];
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.active-tab {
+  background: var(--color-accent) !important;
+  color: #fff !important;
+  border-color: var(--color-accent) !important;
+}

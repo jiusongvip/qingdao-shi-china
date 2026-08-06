@@ -1,0 +1,547 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface Attraction { name: string; type: string; area: string; price: string; duration: string; suit: string; photo: string; desc: string; }
+interface Hotel { name: string; area: string; type: string; price: string; beach: string; metro: string; english: string; bestFor: string; rating: number; }
+interface FoodPick { name: string; cn: string; area: string; type: string; price: string; desc: string; }
+
+const attractions: Attraction[] = [
+  { name: "Zhanqiao Pier", type: "landmark", area: "shinan", price: "free", duration: "1h", suit: "all", photo: "/images/zhanqiao-pier.webp", desc: "Iconic 440m pier stretching into the Yellow Sea. Best at sunrise when locals practice tai chi. The octagonal pavilion at the end is Qingdao's postcard image. Go before 9am to avoid crowds." },
+  { name: "Badaguan Scenic Area", type: "architecture", area: "shinan", price: "free", duration: "2h", suit: "couples", photo: "/images/badaguan-architecture.webp", desc: "Tree-lined streets named after ancient Chinese military passes. Over 200 German-era villas in Gothic, Baroque, and Rococo styles. Magical in cherry blossom (April) and autumn leaves (October). Free to wander." },
+  { name: "Tsingtao Beer Museum", type: "beer", area: "shibei", price: "60", duration: "2h", suit: "all", photo: "/images/tsingtao-beer.webp", desc: "Housed in the original 1903 brewery. Vintage copper kettles, modern bottling line, and two free glasses of unfiltered draft Tsingtao at the end. Ticket Y=60 includes tastings." },
+  { name: "Laoshan Mountain", type: "nature", area: "laoshan", price: "130", duration: "day", suit: "all", photo: "/images/laoshan-mountain.webp", desc: "Sacred Taoist mountain rising 1,133m from the coastline. Taiqing Palace dates back to 140 BC. Hike for sea views and ancient temples. Start at 8am to beat tour groups. Bus 304 or Didi (40 min)." },
+  { name: "May Fourth Square", type: "landmark", area: "shinan", price: "free", duration: "1h", suit: "all", photo: "/images/may-fourth-square.webp", desc: "Qingdao's modern civic heart. The red Wind of May sculpture marks the spot. Locals fly kites, skateboard, and dance at dusk. Seaside promenade starts here, stretching 3km east." },
+  { name: "Golden Beach", type: "beach", area: "huangdao", price: "free", duration: "half", suit: "families", photo: "/images/golden-beach.webp", desc: "Best sand beach in Qingdao on Huangdao Island. 3.5km of fine golden sand. Cross-bay ferry from city (20 min). Water swimmable June-September. Wide enough it never feels crowded." },
+  { name: "St. Michael's Cathedral", type: "architecture", area: "shinan", price: "10", duration: "1h", suit: "all", photo: "/images/st-michaels-cathedral.webp", desc: "Twin-spired Neo-Romanesque cathedral built 1932-1934 by German architects. Largest Catholic church in Qingdao with stunning stained glass and vaulted ceilings. Active parish. Y=10 entry." },
+  { name: "Underwater World", type: "museum", area: "shinan", price: "130", duration: "3h", suit: "families", photo: "/images/underwater-world.webp", desc: "China's first aquarium (1932). 86m moving walkway through a transparent tunnel with sharks, rays, and sea turtles overhead. Good rainy-day option. Y=130 adult." },
+  { name: "Olympic Sailing Center", type: "landmark", area: "shinan", price: "free", duration: "1h", suit: "all", photo: "/images/olympic-sailing-center.webp", desc: "2008 Beijing Olympics sailing venue. Marina lined with yachts and waterfront bars. Walk from May Fourth Square (10 min east). Boat rides from Y=50. Best at sunset." },
+  { name: "Xiaoyushan Park", type: "nature", area: "shinan", price: "15", duration: "1h", suit: "photographers", photo: "/images/xiaoyushan-park.webp", desc: "Hilltop park with the best panoramic view of Old Town red-tiled roofs against the sea. Climb the three-story pagoda for 360-degree views. Photographers: go at golden hour." },
+  { name: "Qingdao TV Tower", type: "landmark", area: "shinan", price: "50", duration: "1h", suit: "all", photo: "/images/qingdao-tv-tower.webp", desc: "232m observation deck with glass floor sections. Best city views on a clear day: see from Old Town to Huangdao. Go after 4pm for sunset. The revolving restaurant is overpriced; eat elsewhere. Y=50." },
+  { name: "Silver Beach", type: "beach", area: "huangdao", price: "free", duration: "half", suit: "all", photo: "/images/silver-beach.webp", desc: "Golden Beach's quieter neighbor, 2km west. Fewer crowds, same fine sand. Popular with locals for weekend barbecues. Peaceful alternative when Golden Beach is packed. Accessible by the same ferry + short bus ride." },
+];
+
+const hotels: Hotel[] = [
+  { name: "Shangri-La Qingdao", area: "shinan", type: "luxury", price: "\-200", beach: "15min walk", metro: "3min", english: "Yes", bestFor: "Business, families", rating: 9.2 },
+  { name: "Old Town Hostel", area: "oldtown", type: "hostel", price: "\-20", beach: "5min walk", metro: "8min", english: "Partial", bestFor: "Backpackers", rating: 8.5 },
+  { name: "Holiday Inn Qingdao", area: "shinan", type: "mid", price: "\-90", beach: "10min walk", metro: "5min", english: "Yes", bestFor: "Couples, first-timers", rating: 8.7 },
+  { name: "Home Inn (Rujia)", area: "shibei", type: "budget", price: "\-35", beach: "20min bus", metro: "2min", english: "No", bestFor: "Budget travelers", rating: 7.8 },
+  { name: "Laoshan Sea View B&B", area: "laoshan", type: "bnb", price: "\-80", beach: "2min walk", metro: "15min bus", english: "Some", bestFor: "Nature lovers", rating: 9.0 },
+  { name: "InterContinental Qingdao", area: "shinan", type: "luxury", price: "\-250", beach: "5min walk", metro: "5min", english: "Yes", bestFor: "Luxury travelers", rating: 9.3 },
+  { name: "Qingdao Kaiyue Hostel", area: "oldtown", type: "hostel", price: "\-15", beach: "10min walk", metro: "10min", english: "Yes", bestFor: "Solo travelers", rating: 8.9 },
+  { name: "Crowne Plaza Qingdao", area: "shibei", type: "mid", price: "\-110", beach: "15min walk", metro: "2min", english: "Yes", bestFor: "Business travelers", rating: 8.6 },
+];
+
+const foodPicks: FoodPick[] = [
+  { name: "Chunhelou Restaurant", cn: "chun he lou", area: "shinan", type: "seafood", price: "\$\$", desc: "Classic Shandong cuisine since 1891. Try the sweet and sour carp (tang cu li yu) and jiaozi dumplings." },
+  { name: "Qingdao Beer Street", cn: "Dengzhou Lu pi jiu jie", area: "shibei", type: "beer", price: "\$", desc: "Dengzhou Lu. Outdoor seating, fresh draft Tsingtao by the jug, grilled squid skewers (kao you yu). Order san pi: original, dark, and green IPA-style." },
+  { name: "Yunxiao Road Food Street", cn: "Yunxiao Lu mei shi jie", area: "shinan", type: "seafood", price: "\$\$", desc: "Dozens of seafood restaurants. Pick live seafood from tanks — try spicy clams (la chao ge li) and beer-battered prawns." },
+  { name: "Pichai Yuan Food Court", cn: "Pi Chai Yuan", area: "oldtown", type: "street", price: "\$", desc: "Historic food alley since 1902. Grilled squid, Qingdao potstickers (guo tie), lamb skewers (yang rou chuan). A local institution." },
+  { name: "Kaiyue Western Restaurant", cn: "Kai Yue xi can ting", area: "shinan", type: "western", price: "\$\$\$", desc: "German-style restaurant near the cathedral. Sausages, sauerkraut, and imported beers. Good break from Chinese food if you need one." },
+  { name: "Minjiang Road Night Market", cn: "Minjiang Lu ye shi", area: "shinan", type: "street", price: "\$", desc: "50+ stalls, best after 7pm. Try jianbing (savory crepe with egg and crispy wonton) and chou doufu if you are brave. Cash mostly not accepted — use Alipay." },
+  { name: "Haidilao Hot Pot", cn: "Hai Di Lao huo guo", area: "shibei", type: "chinese", price: "\$\$", desc: "China's most famous hot pot chain. English tablet ordering. Free snacks while you wait. Try the signature spicy broth with hand-pulled noodles (la mian)." },
+  { name: "Qingdao Coffee Street", cn: "Da xue lu ka fei jie", area: "shinan", type: "cafe", price: "\$\$", desc: "University Road (Da Xue Lu) area. Independent cafes in converted German buildings. Good WiFi, great for a rest stop between attractions." },
+];
+
+const faqItems = [
+  { q: "Do I need a visa to visit Qingdao?", a: "Most foreign visitors need a Chinese visa. Qingdao offers 144-hour visa-free transit for eligible nationalities arriving at Qingdao Liuting Airport and departing to a third country. Check the latest policy before booking." },
+  { q: "How do I pay for things in Qingdao?", a: "Alipay and WeChat Pay dominate. Both now support linking foreign Visa and Mastercard. Set up Alipay before arriving: download the app, register with passport, link your card. Cash is accepted but increasingly rare." },
+  { q: "Do I need a VPN in China?", a: "Yes. Google, Gmail, Instagram, WhatsApp, and many Western sites are blocked. Install a VPN on all devices before your flight. Test it before you leave. ExpressVPN and Astrill are commonly recommended by travelers." },
+  { q: "Is Qingdao safe for tourists?", a: "Very safe. Violent crime against tourists is extremely rare. The main risk is taxi scams at the airport (use Didi instead) and pickpocketing in crowded areas during the Beer Festival." },
+  { q: "When is the best time to visit?", a: "May-June and September-October for the best weather. July-August is peak season (hot, humid, Beer Festival crowds). November-April is off-season: cold but hotels are 50-70% cheaper." },
+  { q: "Can I use English in Qingdao?", a: "Limited. Hotel front desks and major attractions usually have some English. Restaurants and taxis generally do not. Download Google Translate with offline Chinese. Screenshot key phrases before you go." },
+];
+
+const areaLabel = (a: string) => { const m: Record<string,string> = {shinan:"Shinan", shibei:"Shibei", oldtown:"Old Town", laoshan:"Laoshan", huangdao:"Huangdao"}; return m[a]||a; };
+const typeLabel = (t: string) => { const m: Record<string,string> = {luxury:"Luxury", hostel:"Hostel", mid:"Mid-range", budget:"Budget", bnb:"B&B"}; return m[t]||t; };
+const durLabel = (d: string) => { const m: Record<string,string> = {day:"Full day", half:"Half day"}; return m[d]||d; };
+const attrTypeLabel = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+const foodTypeLabel = (t: string) => { const m: Record<string,string> = {seafood:"Seafood", beer:"Beer", street:"Street Food", western:"Western", chinese:"Chinese", cafe:"Cafe"}; return m[t]||t; };
+// Distinct images for each attraction (AI-generated, WebP)
+const getSlug = (n: string) => n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+---
+
+<Layout>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-white">
+    <div class="max-w-[1400px] mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-0 min-h-[85dvh] md:min-h-[75dvh]">
+      <div class="flex flex-col justify-center py-12 md:py-20 md:pr-8">
+        <p class="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wide mb-4">Qingdao, Shandong Province</p>
+        <h1 class="text-4xl md:text-6xl tracking-tight leading-none font-bold text-[var(--color-text)]">Qingdao China:<br/>Beaches, Beer &<br/>Bavaria by the Sea</h1>
+        <p class="text-lg text-[var(--color-text-secondary)] leading-relaxed mt-6 max-w-[60ch]">The coastal city that made Chinese beer famous. German-era red-tiled roofs, sandy beaches, sacred Taoist mountains, and the freshest seafood in northern China — all wrapped in one of the country’s most relaxed waterfront cities.</p>
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="/qingdao-itineraries/3-days" class="btn-primary text-base px-6 py-3">3-Day Itinerary</a>
+          <a href="#why-qingdao" class="btn-outline text-base px-6 py-3">Why visit Qingdao?</a>
+        </div>
+        <div class="flex gap-6 mt-10">
+          <div><p class="text-2xl font-bold text-[var(--color-text)]">9.4M</p><p class="caption">Population</p></div>
+          <div><p class="text-2xl font-bold text-[var(--color-text)]">May-Oct</p><p class="caption">Best Season</p></div>
+          <div><p class="text-2xl font-bold text-[var(--color-text)]">$30-80</p><p class="caption">Daily Budget</p></div>
+        </div>
+      </div>
+      <div class="relative h-64 md:h-full min-h-[320px]">
+        <img src="/images/qingdao-coastline-hero.webp" alt="Qingdao coastline with red-tiled roofs and the sea" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-xs text-white/60 text-right">Last updated: August 2026 &mdash; based on multiple on-the-ground visits and ongoing research</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Time to Visit -->
+  <section class="section border-t" id="best-time">
+    <div class="container">
+      <div class="mb-10"><p class="tag mb-3">When to Go</p><h2>Best time to visit Qingdao</h2><p class="body mt-3 max-w-[65ch]">Qingdao has a temperate monsoon climate with four distinct seasons. The sweet spot is May-June and September-October, when skies are clear, temperatures sit in the low 20s (&deg;C), and crowds are manageable. Summer brings the famous Tsingtao Beer Festival but also humidity and peak prices. Winter is cold and windy but hotel rates drop by half.</p></div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="card p-5">
+          <p class="text-xs font-semibold text-[var(--color-accent)] uppercase mb-2">Spring (Mar-May)</p>
+          <p class="text-lg font-bold mb-1">8–20&deg;C</p>
+          <p class="caption text-xs leading-relaxed">Cherry blossoms in April, comfortable temperatures. Occasional sandstorms from the north in early March. A light jacket is usually enough by May.</p>
+          <p class="caption text-xs mt-2"><span class="text-green-600 font-semibold">Good time</span> &mdash; fewer crowds, fair weather</p>
+        </div>
+        <div class="card p-5 ring-2 ring-[var(--color-accent)]">
+          <p class="text-xs font-semibold text-[var(--color-accent)] uppercase mb-2">Summer (Jun-Aug)</p>
+          <p class="text-lg font-bold mb-1">22–28&deg;C</p>
+          <p class="caption text-xs leading-relaxed">Peak beach season. The Tsingtao Beer Festival runs late July through August. Hot, humid, and crowded. Book hotels 2–3 months ahead for August.</p>
+          <p class="caption text-xs mt-2"><span class="text-amber-600 font-semibold">Peak season</span> &mdash; book early, expect crowds</p>
+        </div>
+        <div class="card p-5 ring-2 ring-[var(--color-accent)]">
+          <p class="text-xs font-semibold text-[var(--color-accent)] uppercase mb-2">Autumn (Sep-Nov)</p>
+          <p class="text-lg font-bold mb-1">10–22&deg;C</p>
+          <p class="caption text-xs leading-relaxed">The best season. Clear blue skies, golden light, comfortable temperatures. Swimming still possible through September. Perfect for photography at Badaguan.</p>
+          <p class="caption text-xs mt-2"><span class="text-green-600 font-semibold">Best time</span> &mdash; ideal weather, moderate crowds</p>
+        </div>
+        <div class="card p-5">
+          <p class="text-xs font-semibold text-[var(--color-accent)] uppercase mb-2">Winter (Dec-Feb)</p>
+          <p class="text-lg font-bold mb-1">-3–6&deg;C</p>
+          <p class="caption text-xs leading-relaxed">Cold and windy but seldom below freezing. Hotels drop 50–70% in price. Empty beaches have a stark beauty. Few tourists anywhere.</p>
+          <p class="caption text-xs mt-2"><span class="text-slate-500 font-semibold">Off season</span> &mdash; cheap, quiet, cold</p>
+        </div>
+      </div>
+      <p class="caption mt-4">Detailed monthly breakdown, dressing guide, and live forecast: <a href="/qingdao-weather" class="text-[var(--color-accent)] hover:underline font-medium">Qingdao weather page</a></p>
+    </div>
+  </section>
+
+  <!-- Why Qingdao -->
+  <section class="section-sm border-t" id="why-qingdao">
+    <div class="container max-w-4xl">
+      <p class="tag mb-4">Why Qingdao?</p>
+      <h2 class="mb-6">Three reasons travelers keep coming back</h2>
+      <div class="space-y-4 body leading-relaxed text-[var(--color-text-secondary)]">
+        <p><strong>It is the rare Chinese city where you can surf in the morning, drink world-famous beer at its source by lunch, and wander cobblestone streets lined with Bavarian architecture by afternoon.</strong> Qingdao (pronounced "ching-dow") sits on a peninsula jutting into the Yellow Sea in Shandong Province, about halfway between Beijing and Shanghai. Its coastline runs for over 860 kilometers, dotted with beaches, rocky headlands, and fishing villages that feel worlds away from China’s megacities.</p>
+        <p>The city wears its colonial past openly. From 1898 to 1914, Qingdao was a German concession, and the legacy is everywhere: St. Michael’s Cathedral, the Governor’s Mansion, and entire neighborhoods of European-style villas with red-tiled roofs. The Germans also started what became <a href="/qingdao-beer" class="text-[var(--color-accent)] hover:underline font-medium">Tsingtao Brewery</a> in 1903. Today, Tsingtao is China’s most famous beer export, and the city celebrates it every August with one of Asia’s largest beer festivals.</p>
+        <p>For nature lovers, <a href="#attractions" class="text-[var(--color-accent)] hover:underline font-medium">Laoshan Mountain</a> rises abruptly from the coast just east of town — one of China’s sacred Taoist peaks with temples, hiking trails, and sweeping views of the sea. On clear days you can hike up in the morning and be back on the beach by late afternoon. Qingdao is one of the few places in China where a hiking holiday and a beach holiday are the same trip.</p>
+        <p>Compared to Beijing or Shanghai, Qingdao moves at a gentler pace. Locals call it a city for living, not just for working. You will see people flying kites at May Fourth Square, families digging clams at low tide, and groups of friends gathered around tables of grilled seafood and fresh draft beer. It is an excellent introduction to China for first-time visitors and a welcome breather for seasoned travelers.</p>
+      </div>
+      <div class="mt-8"><a href="/qingdao-travel-guide" class="btn-primary">Read the full travel guide &rarr;</a></div>
+    </div>
+  </section>
+
+  
+  <!-- Where to Stay -->
+  <section class="section border-t" id="neighborhoods">
+    <div class="container">
+      <div class="mb-10"><p class="tag mb-3">Where to Stay</p><h2>Which neighborhood fits your trip?</h2><p class="body mt-3 max-w-[65ch]">Qingdao spreads across several distinct districts. Picking the right base makes or breaks your trip. Do not book before reading this — many first-timers end up in a business district 45 minutes from the Old Town.</p></div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="card p-6 ring-2 ring-[var(--color-accent)]">
+          <h3 class="font-semibold mb-1">Shinan District</h3>
+          <p class="tag mb-3">Best for first-timers</p>
+          <p class="caption text-xs leading-relaxed mb-3">The tourist core. Zhanqiao Pier, St. Michael''s Cathedral, Badaguan, May Fourth Square, and most restaurants are within walking distance. Prices are highest here.</p>
+          <div class="caption text-xs space-y-1"><span class="font-medium">Hotel range:</span> Y=80-250/night<br/><span class="font-medium">Vibe:</span> Historic, walkable, tourist-friendly<br/><span class="font-medium">Best for:</span> First visit, couples, sightseeing</div>
+        </div>
+        <div class="card p-6">
+          <h3 class="font-semibold mb-1">Old Town (Zhongshan Lu)</h3>
+          <p class="tag mb-3">Best for character</p>
+          <p class="caption text-xs leading-relaxed mb-3">Cobblestones, German architecture, and the original 1898 street grid. Hostels and boutique hotels in converted villas. Close to the train station and ferry terminal.</p>
+          <div class="caption text-xs space-y-1"><span class="font-medium">Hotel range:</span> Y=15-120/night<br/><span class="font-medium">Vibe:</span> Charming, slightly gritty, authentic<br/><span class="font-medium">Best for:</span> Backpackers, photographers, history buffs</div>
+        </div>
+        <div class="card p-6">
+          <h3 class="font-semibold mb-1">Shibei District</h3>
+          <p class="tag mb-3">Best value</p>
+          <p class="caption text-xs leading-relaxed mb-3">North of Shinan, where locals actually live. Beer Museum and Beer Street are here. Hotels 40-50% cheaper than Shinan. Metro to Old Town in 10 min.</p>
+          <div class="caption text-xs space-y-1"><span class="font-medium">Hotel range:</span> Y=35-110/night<br/><span class="font-medium">Vibe:</span> Local, practical, less polished<br/><span class="font-medium">Best for:</span> Budget travelers, beer pilgrims</div>
+        </div>
+        <div class="card p-6">
+          <h3 class="font-semibold mb-1">Laoshan District</h3>
+          <p class="tag mb-3">Best for nature</p>
+          <p class="caption text-xs leading-relaxed mb-3">At the foot of Laoshan Mountain, 30-40 min east. Sea-view B&Bs, hiking at your doorstep, best sunrises in Qingdao. Not practical for a city-focused trip.</p>
+          <div class="caption text-xs space-y-1"><span class="font-medium">Hotel range:</span> Y=60-200/night<br/><span class="font-medium">Vibe:</span> Scenic, quiet, remote<br/><span class="font-medium">Best for:</span> Hikers, nature lovers, retreats</div>
+        </div>
+        <div class="card p-6">
+          <h3 class="font-semibold mb-1">Huangdao District</h3>
+          <p class="tag mb-3">Best for beaches</p>
+          <p class="caption text-xs leading-relaxed mb-3">Across the bay from the main city. Golden Beach and Silver Beach. Beer Festival in August. Ferry or 40-min tunnel taxi to Shinan. Quiet and spacious.</p>
+          <div class="caption text-xs space-y-1"><span class="font-medium">Hotel range:</span> Y=50-180/night<br/><span class="font-medium">Vibe:</span> Beach town, family-friendly<br/><span class="font-medium">Best for:</span> Families, beach holiday, Beer Festival</div>
+        </div>
+        <div class="card p-6 bg-[var(--color-accent-subtle)]/30">
+          <h3 class="font-semibold mb-1">Our Recommendation</h3>
+          <p class="caption text-xs leading-relaxed">If this is your first visit: stay in <strong>Shinan District</strong>, somewhere between the train station and May Fourth Square. You will walk to 80% of the attractions on this page. If you are on a tight budget: Shibei near a metro station. If you have 4+ days: split your stay — 2 nights in Shinan, 2 nights in Laoshan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- How to Get to Qingdao -->
+  <section class="section border-t" id="get-there">
+    <div class="container">
+      <div class="mb-10"><p class="tag mb-3">Getting Here</p><h2>How to get to Qingdao</h2><p class="body mt-3 max-w-[65ch]">Qingdao is well-connected by air, high-speed rail, and ferry. Most international visitors arrive via a domestic connection from Beijing or Shanghai.</p></div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="card p-6">
+          <div class="text-2xl mb-3">✈️</div>
+          <h3 class="text-base mb-2">By Air</h3>
+          <p class="caption leading-relaxed">Qingdao Jiaodong International Airport (TAO) handles direct flights from Seoul, Tokyo, Osaka, Bangkok, and major Chinese cities. Metro Line 8 connects the airport to the city center in about 40 minutes. A Didi ride costs around ¥120–150.</p>
+          <a href="/qingdao-transportation" class="text-sm font-medium text-[var(--color-accent)] mt-3 inline-block hover:underline">Airport guide &rarr;</a>
+        </div>
+        <div class="card p-6">
+          <div class="text-2xl mb-3">🚆</div>
+          <h3 class="text-base mb-2">By High-Speed Rail</h3>
+          <p class="caption leading-relaxed">Beijing to Qingdao takes 3–4 hours (¥250–350). Shanghai to Qingdao takes 5–6 hours (¥300–400). Trains arrive at Qingdao Station (Old Town) or Qingdao North Station. Book on Trip.com or 12306.cn.</p>
+          <a href="/qingdao-transportation" class="text-sm font-medium text-[var(--color-accent)] mt-3 inline-block hover:underline">Train guide &rarr;</a>
+        </div>
+        <div class="card p-6">
+          <div class="text-2xl mb-3">⛴️</div>
+          <h3 class="text-base mb-2">By Ferry</h3>
+          <p class="caption leading-relaxed">International ferries connect Qingdao to Incheon (South Korea) and Shimonoseki (Japan). Domestic ferries run to Dalian and Yantai. The international terminal is at Qingdao Port, about 20 minutes from Old Town by taxi.</p>
+          <a href="/qingdao-transportation" class="text-sm font-medium text-[var(--color-accent)] mt-3 inline-block hover:underline">Ferry details &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Budget --><div id="budget-section" class="absolute -top-20"></div>
+  <section class="section border-t"><div class="container">
+    <div class="mb-10"><p class="tag mb-3">Budget</p><h2>How much does Qingdao cost?</h2><p class="body mt-3 max-w-[65ch]">Qingdao is one of China’s more affordable coastal cities. A backpacker can get by on $30/day, while a comfortable mid-range trip with good hotels and seafood dinners runs about $80/day. These estimates cover accommodation, food, local transport, and attraction tickets — per person, in USD. Prices peak during the August Beer Festival; visit in May or October for the best value.</p></div>
+    <div class="flex gap-2 mb-6" id="cost-tabs">
+      <button class="btn-outline text-sm active-tab" data-b="2">2 Days</button>
+      <button class="btn-outline text-sm" data-b="3">3 Days</button>
+      <button class="btn-outline text-sm" data-b="5">5 Days</button>
+    </div>
+    <div class="grid grid-cols-3 gap-4" id="budget-2">
+      <div class="card p-5 text-center"><p class="text-xs font-semibold text-[var(--color-text-tertiary)] uppercase mb-2">Budget</p><p class="text-3xl font-bold text-[var(--color-text)]">$80</p><p class="caption mt-1">Hostels, street food, buses</p></div>
+      <div class="card p-5 text-center ring-2 ring-[var(--color-accent)]"><p class="text-xs font-semibold text-[var(--color-text-tertiary)] uppercase mb-2">Comfort</p><p class="text-3xl font-bold text-[var(--color-text)]">$230</p><p class="caption mt-1">3-star hotel, local restaurants, taxi</p></div>
+      <div class="card p-5 text-center"><p class="text-xs font-semibold text-[var(--color-text-tertiary)] uppercase mb-2">Premium</p><p class="text-3xl font-bold text-[var(--color-text)]">$540</p><p class="caption mt-1">5-star, seafood feasts, private car</p></div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 hidden" id="budget-3">
+      <div class="card p-5 text-center"><p class="text-xs font-semibold text-[var(--color-text-tertiary)] uppercase mb-2">Budget</p><p class="text-3xl font-bold text-[var(--color-text)]">$130</p><p class="caption mt-1">Hostels, street food, buses</p></div>
+      <div class="card p-5 text-center ring-2 ring-[var(--color-accent)]"><p class="text-xs font-semibold text-[var(--color-text-tertiary)] uppercase mb-2">Comfort</p><p class="text-3xl font-bold text-[var(--color-text)]">$375</p><p class="caption mt-1">3-star hotel, local restaurants, taxi</p></div>
+      <div class="card p-5 text-center"><p class="text-xs font-semibold text-[var(--color-text-tertiary)] uppercase mb-2">Premium</p><p class="text-3xl font-bold text-[var(--color-text)]">$880</p><p class="caption mt-1">5-star, seafood feasts, private car</p></div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 hidden" id="budget-5">
+      <div class="card p-5 text-center"><p class="text-xs font-semibold text-[var(--color-text-tertiary)] uppercase mb-2">Budget</p><p class="text-3xl font-bold text-[var(--color-text)]">$245</p><p class="caption mt-1">Hostels, street food, buses</p></div>
+      <div class="card p-5 text-center ring-2 ring-[var(--color-accent)]"><p class="text-xs font-semibold text-[var(--color-text-tertiary)] uppercase mb-2">Comfort</p><p class="text-3xl font-bold text-[var(--color-text)]">$725</p><p class="caption mt-1">3-star hotel, local restaurants, taxi</p></div>
+      <div class="card p-5 text-center"><p class="text-xs font-semibold text-[var(--color-text-tertiary)] uppercase mb-2">Premium</p><p class="text-3xl font-bold text-[var(--color-text)]">$1,700</p><p class="caption mt-1">5-star, seafood feasts, private car</p></div>
+    </div>
+    <p class="caption mt-4 text-center">Per person. <a href="/qingdao-travel-guide" class="text-[var(--color-accent)] hover:underline">See full breakdown</a></p>
+  </div></section>
+
+  <!-- Itineraries --><div id="itineraries-section" class="absolute -top-20"></div>
+  <section class="section border-t"><div class="container">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div><p class="tag mb-3">Itineraries</p><h2>Plan your trip by days</h2><p class="body mt-3 max-w-[65ch]">Most visitors need 3 days to cover the essentials: Old Town, the beer museum, Badaguan, and a half-day on the beach. With 5 days you can add a full day at Laoshan Mountain and explore the Huangdao Peninsula. A 2-day weekend works if you are coming from Beijing or Shanghai — just enough for the highlights. Pick your pace below.</p></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="/qingdao-itineraries/2-days" class="card group p-6"><p class="text-sm font-semibold text-[var(--color-accent)] mb-2">Weekend</p><h3 class="mb-2">2 Days</h3><p class="caption">Old town, beer museum, Zhanqiao Pier. Perfect weekend escape from Beijing or Shanghai.</p><p class="text-sm font-medium text-[var(--color-accent)] mt-4 group-hover:underline">View itinerary</p></a>
+      <a href="/qingdao-itineraries/3-days" class="card group p-6"><p class="text-sm font-semibold text-[var(--color-accent)] mb-2">Classic</p><h3 class="mb-2">3 Days</h3><p class="caption">Beaches, Laoshan Mountain, German architecture, seafood feast. The sweet spot for most travelers.</p><p class="text-sm font-medium text-[var(--color-accent)] mt-4 group-hover:underline">View itinerary</p></a>
+      <a href="/qingdao-itineraries/5-days" class="card group p-6"><p class="text-sm font-semibold text-[var(--color-accent)] mb-2">Deep Dive</p><h3 class="mb-2">5 Days</h3><p class="caption">All the classics plus Huangdao Island, photography routes, and a relaxed pace with time to explore.</p><p class="text-sm font-medium text-[var(--color-accent)] mt-4 group-hover:underline">View itinerary</p></a>
+    </div>
+  </div></section>
+
+  <!-- Attractions --><div id="attractions-section" class="absolute -top-20"></div>
+  <section class="section border-t" id="attractions"><div class="container">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div><p class="tag mb-3">Attractions</p><h2>12 places worth your time</h2><p class="body mt-3 max-w-[65ch]">Qingdao’s attractions span 19th-century German cathedrals, Taoist mountain temples, and kilometers of sandy coastline. Most first-time visitors base themselves in Shinan District, where Zhanqiao Pier, St. Michael’s Cathedral, and the Tsingtao Beer Museum are all within walking distance of each other. Nature lovers should reserve a full day for Laoshan, while beachgoers will want to cross the Jiaozhou Bay Bridge to the wide sands of Huangdao. Use the filters below to find your kind of place.</p></div>
+      <div class="flex flex-wrap gap-2" id="attr-filters">
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="all" data-active>All</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="beach">Beach</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="architecture">Architecture</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="nature">Nature</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="beer">Beer</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="museum">Museum</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="landmark">Landmark</button>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="attr-grid">
+{attractions.map(a => { const s = getSlug(a.name); return (<Fragment><a href={`/qingdao-attractions/${s}`} class="card group" data-type={a.type}><div class="aspect-[3/2] overflow-hidden"><img src={a.photo} alt={a.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" /></div><div class="p-4"><div class="flex items-center justify-between mb-1"><h4 class="text-sm font-semibold">{a.name}</h4><span class="tag">{durLabel(a.duration)}</span></div><div class="flex items-center gap-2 caption mt-2"><span class="tag">{attrTypeLabel(a.type)}</span><span>{a.area === "shinan" ? "Shinan" : a.area === "shibei" ? "Shibei" : a.area === "laoshan" ? "Laoshan" : a.area === "huangdao" ? "Huangdao" : a.area}</span><span>{a.price === "free" ? "Free" : "¥" + a.price}</span></div><p class="caption text-xs leading-relaxed mt-3 line-clamp-3">{a.desc}</p></div></a></Fragment>); })}
+    </div>
+  </div></section>
+
+  <!-- Hotels --><div id="hotels-section" class="absolute -top-20"></div>
+  <section class="section border-t" id="hotels"><div class="container">
+    <div class="mb-10"><p class="tag mb-3">Where to Stay</p><h2>Compare 8 hotels across Qingdao</h2><p class="body mt-3 max-w-[65ch]">Qingdao has accommodation for every budget, from $15 hostel beds in Old Town to $250+ five-star rooms on the waterfront. Shinan District puts you within walking distance of most attractions. Laoshan is ideal for hikers and sea views. Shibei offers good value with easy metro access. Ratings below are aggregated from major booking platforms.</p></div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-3 px-3 font-semibold">Hotel</th><th class="text-left py-3 px-3 font-semibold hidden md:table-cell">Area</th><th class="text-left py-3 px-3 font-semibold hidden md:table-cell">Type</th><th class="text-left py-3 px-3 font-semibold">Price/Night</th><th class="text-left py-3 px-3 font-semibold hidden lg:table-cell">To Beach</th><th class="text-left py-3 px-3 font-semibold hidden lg:table-cell">English</th><th class="text-left py-3 px-3 font-semibold">Rating</th></tr></thead>
+        <tbody>
+          {hotels.map(h => { return (<tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50 transition-colors"><td class="py-3 px-3 font-medium">{h.name}</td><td class="py-3 px-3 hidden md:table-cell caption">{areaLabel(h.area)}</td><td class="py-3 px-3 hidden md:table-cell"><span class="tag">{typeLabel(h.type)}</span></td><td class="py-3 px-3">{h.price}</td><td class="py-3 px-3 hidden lg:table-cell caption">{h.beach}</td><td class="py-3 px-3 hidden lg:table-cell caption">{h.english}</td><td class="py-3 px-3 font-semibold">{h.rating}</td></tr>); })}
+        </tbody>
+      </table>
+    </div>
+  </div></section>
+
+  <!-- Food --><div id="food-section" class="absolute -top-20"></div>
+  <section class="section border-t" id="food"><div class="container">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div><p class="tag mb-3">Food & Drink</p><h2>8 places to eat and drink</h2><p class="body mt-3 max-w-[65ch]">Qingdao is arguably the best seafood city in northern China. The local cuisine is Shandong-style (Lu cuisine), one of China’s eight great culinary traditions, emphasizing fresh ingredients and clean flavors. From century-old restaurants to bustling night markets, here are 8 spots worth your appetite — all personally tested.</p></div>
+      <div class="flex flex-wrap gap-2" id="food-filters">
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="all" data-active>All</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="seafood">Seafood</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="street">Street Food</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="beer">Beer</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="western">Western</button>
+        <button class="tag cursor-pointer border border-transparent data-[active]:border-[var(--color-accent)] data-[active]:bg-[var(--color-accent-subtle)]" data-filter="cafe">Cafe</button>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="food-grid">
+      {foodPicks.map(f => { return (<Fragment><div class="card p-5" data-type={f.type}><h4 class="text-sm font-semibold mb-1">{f.name}</h4><p class="caption text-xs mb-2">{areaLabel(f.area)}</p><p class="caption text-xs leading-relaxed mb-3">{f.desc}</p><div class="flex items-center gap-2"><span class="tag">{foodTypeLabel(f.type)}</span><span class="caption">{f.price}</span></div></div></Fragment>); })}
+    </div>
+  </div></section>
+
+
+  <!-- Packing --><div id="packing-section" class="absolute -top-20"></div>
+  <section class="section border-t"><div class="container">
+    <div class="mb-8"><p class="tag mb-3">What to Pack</p><h2>Pack for Qingdao by month</h2><p class="body mt-3 max-w-[65ch]">Qingdao’s weather shifts sharply across seasons: subzero winds in January, cherry blossoms in April, beach weather by June, and crisp golden light in October. Select your travel month below to see exactly what belongs in your suitcase. Every item is backed by real climate data from the past decade.</p></div>
+    <div class="flex flex-wrap gap-2 mb-8" id="packing-months">
+      {["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].map(m => { return (<button class="btn-outline text-xs px-3 py-1.5 data-[active]:bg-[var(--color-accent)]  data-[active]:border-[var(--color-accent)]" data-month={m} data-active={m === "Jun" ? "" : undefined}>{m}</button>); })}
+    </div>
+    <div class="grid md:grid-cols-2 gap-6" id="packing-output">
+      <div class="card p-5" id="packing-clothes"><h4 class="text-sm font-semibold mb-3">Clothing</h4><ul class="caption space-y-1.5 list-disc list-inside" id="packing-clothes-list"><li>Light breathable clothing</li><li>Swimsuit and beach towel</li><li>Hat and sunglasses</li><li>Light rain jacket (summer showers)</li></ul></div>
+      <div class="card p-5" id="packing-gear"><h4 class="text-sm font-semibold mb-3">Gear & Essentials</h4><ul class="caption space-y-1.5 list-disc list-inside" id="packing-gear-list"><li>Mosquito repellent</li><li>Sunscreen (hard to find in China)</li><li>Portable fan or cooling towel</li><li>Umbrella</li></ul></div>
+    </div>
+    <div class="card p-5 mt-6" id="packing-always">
+      <h4 class="text-sm font-semibold mb-2">Always Pack (any month)</h4>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2 caption">
+        <span>Tissues (public toilets lack paper)</span><span>Hand sanitizer</span><span>Power adapter (Type A/C/I)</span><span>VPN pre-installed on all devices</span>
+        <span>Copies of passport + visa</span><span>Imodium</span><span>Portable battery pack</span><span>Reusable water bottle</span>
+      </div>
+    </div>
+  </div></section>
+
+
+  <!-- Map --><div id="map-section" class="absolute -top-20"></div>
+  <section class="section border-t"><div class="container">
+    <div class="mb-10"><p class="tag mb-3">Map</p><h2>Interactive Qingdao Map</h2><p class="body mt-3 max-w-[65ch]">Explore Qingdao visually: every attraction, restaurant, hotel, and transport hub mentioned on this page is plotted on the map below. Click any marker for details. Use this to plan your route and figure out which neighborhood makes sense for your stay.</p></div>
+    <div class="card overflow-hidden"><div id="homepage-map" class="w-full" style="height: 400px;"></div></div>
+    <div class="mt-4 flex gap-2 caption">
+      <span class="inline-block w-3 h-3 rounded-full bg-red-600"></span>Attractions
+      <span class="inline-block w-3 h-3 rounded-full bg-orange-500 ml-3"></span>Restaurants
+      <span class="inline-block w-3 h-3 rounded-full bg-blue-600 ml-3"></span>Hotels
+      <span class="inline-block w-3 h-3 rounded-full bg-green-600 ml-3"></span>Transport
+    </div>
+  </div></section>
+
+
+  <!-- Things to Know Before You Go -->
+  <section class="section border-t" id="survival"><div class="container">
+    <div class="mb-10"><p class="tag mb-3">Things to Know Before You Go</p><h2>What to prepare before your flight</h2><p class="body mt-3 max-w-[65ch]">China is not a destination you can wing. Some things must be set up before you board the plane. Here is the checklist experienced travelers swear by — the stuff generic travel sites gloss over.</p></div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="card p-5">
+        <h4 class="text-sm font-semibold mb-2">☎️ SIM Card or eSIM</h4>
+        <p class="caption text-xs leading-relaxed">Buy a physical SIM at Qingdao Airport (China Unicom, around ¥100 for 20GB). Alternatively, activate an eSIM (Airalo, Nomad, Holafly) <em>before</em> you leave home. Hotel WiFi in China usually requires a Chinese phone number for SMS verification, so having your own data is essential.</p>
+      </div>
+      <div class="card p-5">
+        <h4 class="text-sm font-semibold mb-2">💰 Alipay &amp; WeChat Pay</h4>
+        <p class="caption text-xs leading-relaxed">Download Alipay <em>before</em> your flight. Register with your passport, link a Visa or Mastercard. This is how you pay for everything: street food, taxis, attraction tickets, even toilet paper at public restrooms. Cash is increasingly refused. Set up WeChat Pay as a backup — you will want both.</p>
+      </div>
+      <div class="card p-5">
+        <h4 class="text-sm font-semibold mb-2">🔒 VPN (non-negotiable)</h4>
+        <p class="caption text-xs leading-relaxed">Google, Gmail, Instagram, WhatsApp, and most Western sites are blocked in China. Install a VPN on every device before departure. Once you land, VPN websites will be unreachable. ExpressVPN, Astrill, and LetsVPN are the most reliable inside China. Test it at the airport gate <em>before</em> you leave the terminal.</p>
+      </div>
+      <div class="card p-5">
+        <h4 class="text-sm font-semibold mb-2">💬 Language Barrier</h4>
+        <p class="caption text-xs leading-relaxed">English is limited outside hotel lobbies and major attractions. Download Google Translate with the offline Chinese language pack. Screenshot these key phrases: “Please take me to…” (qing dai wo qu…), “I am allergic to…” (wo dui… guomin), “Where is the toilet?” (cesuo zai nar).</p>
+      </div>
+      <div class="card p-5">
+        <h4 class="text-sm font-semibold mb-2">📄 Visa &amp; Documents</h4>
+        <p class="caption text-xs leading-relaxed">Most foreign nationals need a Chinese tourist visa (L) before travel. Qingdao offers 144-hour visa-free transit for eligible countries if you arrive at Qingdao Airport and depart to a third country. Carry printed copies of your hotel bookings and return flight — immigration may ask. <a href="/faq" class="text-[var(--color-accent)] hover:underline font-medium">Full visa FAQ</a></p>
+      </div>
+      <div class="card p-5">
+        <h4 class="text-sm font-semibold mb-2">🎒 What to Always Pack</h4>
+        <p class="caption text-xs leading-relaxed">Pocket tissues (public toilets rarely have paper), hand sanitizer, Imodium (stomach medicine — hard to find locally), sunscreen (imported brands are rare and expensive in China), a universal power adapter (China uses Type A/C/I), and a portable battery pack for long days out. See the <a href="#packing-section" class="text-[var(--color-accent)] hover:underline font-medium">packing guide</a> for month-specific items.</p>
+      </div>
+    </div>
+    <div class="mt-8 text-center"><a href="/faq" class="btn-primary">Read the complete survival FAQ &rarr;</a></div>
+  </div></section>
+
+  
+  <!-- Survival Chinese -->
+  <section class="section-sm border-t" id="phrases">
+    <div class="container">
+      <div class="mb-8"><p class="tag mb-3">Survival Chinese</p><h2>10 phrases that will save your trip</h2><p class="body mt-3 max-w-[65ch]">English is limited outside hotel lobbies and major attractions. Screenshot this section before your flight. Each phrase below is the one you will actually need — not textbook Chinese.</p></div>
+      <div class="grid md:grid-cols-2 gap-3">
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">1</div>
+          <div>
+            <p class="font-semibold text-sm">Where is the toilet?</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="厕所 在 哪儿">Cesuo zai nar? <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">Memorize this one. Public restrooms are labeled WC. Carry tissues — most toilets have no paper.</p>
+          </div>
+        </div>
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">2</div>
+          <div>
+            <p class="font-semibold text-sm">I want this one (point at menu)</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="我要这个">Wo yao zhe ge <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">The most useful phrase in any Chinese restaurant. Point at a photo or someone else''s plate and say this.</p>
+          </div>
+        </div>
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">3</div>
+          <div>
+            <p class="font-semibold text-sm">No spicy / very little spicy</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="不要辣 微辣">Bu yao la / wei wei la <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">Even dishes not labeled spicy can have chili. Say this when ordering anything. Wei wei la means just a tiny kick.</p>
+          </div>
+        </div>
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">4</div>
+          <div>
+            <p class="font-semibold text-sm">Please take me to (show address)</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="请带我去">Qing dai wo qu... <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">For Didi drivers and taxis. Always have your hotel name and address written in Chinese to show them.</p>
+          </div>
+        </div>
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">5</div>
+          <div>
+            <p class="font-semibold text-sm">I am allergic to (peanuts / seafood)</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="我对花生海鲜过敏">Wo dui (hua sheng / hai xian) guo min <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">Allergy awareness is limited in China. Learn your allergen in Chinese. Carry an allergy card.</p>
+          </div>
+        </div>
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">6</div>
+          <div>
+            <p class="font-semibold text-sm">Check please / The bill</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="买单">Mai dan <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">Say this to get the bill. No tipping in China — it may even be politely refused if you try.</p>
+          </div>
+        </div>
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">7</div>
+          <div>
+            <p class="font-semibold text-sm">I am a foreigner</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="我是外国人">Wo shi wai guo ren <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">Useful when someone speaks to you in rapid Chinese. It politely signals you need patience or English.</p>
+          </div>
+        </div>
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">8</div>
+          <div>
+            <p class="font-semibold text-sm">Do you have an English menu?</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="有英文菜单吗">You ying wen cai dan ma? <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">Tourist-area restaurants often do. If not, use Google Translate camera mode on the Chinese menu.</p>
+          </div>
+        </div>
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">9</div>
+          <div>
+            <p class="font-semibold text-sm">Too expensive! Cheaper okay?</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="太贵了 便宜一点">Tai gui le! Pian yi yi dian? <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">Bargaining is expected at street markets (not in malls or restaurants). Say this with a smile.</p>
+          </div>
+        </div>
+        <div class="card p-4 flex items-start gap-3">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center text-[var(--color-accent)] font-bold text-xs">10</div>
+          <div>
+            <p class="font-semibold text-sm">Delicious! / Very good!</p>
+            <p class="text-[var(--color-accent)] text-sm mt-0.5" data-speak="好吃 很好">Hao chi! / Hen hao! <button class="speak-btn inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-[var(--color-accent)]/10 transition-colors align-middle -mt-0.5" title="Listen to pronunciation" aria-label="Play pronunciation"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5v4h2l3 3V2L4 5H2z"/><path d="M9 4.5a3 3 0 010 5"/><path d="M11 3a6 6 0 010 8"/></svg></button></p>
+            <p class="caption text-xs mt-1">Use this constantly. Chinese people appreciate it when foreigners enjoy their food. You will make friends.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Routes --><div id="routes-section" class="absolute -top-20"></div>
+  <section class="section border-t" id="routes"><div class="container">
+    <div class="mb-10"><p class="tag mb-3">Routes</p><h2>Walking, cycling, driving, photography</h2><p class="body mt-3 max-w-[65ch]">Qingdao rewards slow exploration. The Old Town is best on foot, the coastline is made for cycling, and a car opens up Laoshan and Huangdao. Choose your speed below — each route comes with a turn-by-turn map and practical tips for rentals, timing, and where to stop.</p></div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="/qingdao-routes/walking" class="card group p-6"><h3 class="mb-1">Walking</h3><p class="caption">Old Town stroll, 2-3h, 5km, easy</p><p class="text-sm font-medium text-[var(--color-accent)] mt-3 group-hover:underline">Explore</p></a>
+      <a href="/qingdao-routes/cycling" class="card group p-6"><h3 class="mb-1">Cycling</h3><p class="caption">Coastline ride, half day, 20km</p><p class="text-sm font-medium text-[var(--color-accent)] mt-3 group-hover:underline">Explore</p></a>
+      <a href="/qingdao-routes/driving" class="card group p-6"><h3 class="mb-1">Driving</h3><p class="caption">Laoshan loop, full day, 80km</p><p class="text-sm font-medium text-[var(--color-accent)] mt-3 group-hover:underline">Explore</p></a>
+      <a href="/qingdao-routes/photography" class="card group p-6"><h3 class="mb-1">Photography</h3><p class="caption">Best spots, sunrise to sunset</p><p class="text-sm font-medium text-[var(--color-accent)] mt-3 group-hover:underline">Explore</p></a>
+    </div>
+  </div></section>
+
+  <!-- FAQ --><div id="faq-section" class="absolute -top-20"></div>
+  <section class="section border-t" id="faq"><div class="container">
+    <div class="mb-10"><p class="tag mb-3">FAQ</p><h2>Quick answers to common questions</h2><p class="body mt-3 max-w-[65ch]">The questions every first-time visitor asks. From visa rules to VPNs to whether the tap water is drinkable (it is not).</p></div>
+    <div class="grid md:grid-cols-2 gap-4">
+      {faqItems.map(item => { return (<details class="card group p-5 cursor-pointer"><summary class="font-medium text-sm pr-6 relative marker:content-none">{item.q}<span class="absolute right-0 top-1/2 -translate-y-1/2 text-[var(--color-text-tertiary)] text-lg leading-none group-open:rotate-45 transition-transform">+</span></summary><p class="caption mt-3 leading-relaxed">{item.a}</p></details>); })}
+    </div>
+    <div class="mt-8 text-center"><a href="/faq" class="btn-outline">View all FAQs</a></div>
+  </div></section>
+
+
+  <!-- Compare --><div id="compare-section" class="absolute -top-20"></div>
+  <section class="section border-t"><div class="container">
+    <div class="mb-10"><p class="tag mb-3">Compare</p><h2>Qingdao vs other Chinese cities</h2><p class="body mt-3 max-w-[65ch]">Is Qingdao worth adding to your China itinerary? Here is how it compares to Dalian, Xiamen, and Shanghai across vibe, budget, crowds, and more. The short answer: Qingdao is the best all-rounder for travelers who want beach, culture, and affordability in one place.</p></div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-3 px-3 font-semibold"></th><th class="text-left py-3 px-3 font-semibold bg-[var(--color-accent-subtle)]/50">Qingdao</th><th class="text-left py-3 px-3 font-semibold">Dalian</th><th class="text-left py-3 px-3 font-semibold">Xiamen</th><th class="text-left py-3 px-3 font-semibold">Shanghai</th></tr></thead>
+        <tbody>
+          <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Vibe</td><td class="py-2 px-3 bg-[var(--color-accent-subtle)]/30">Coastal, laid-back, beer culture</td><td class="py-2 px-3">Seaside resort, Russian influence</td><td class="py-2 px-3">Tropical island feel, artsy</td><td class="py-2 px-3">Megacity, futuristic, fast-paced</td></tr>
+          <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Best for</td><td class="py-2 px-3 bg-[var(--color-accent-subtle)]/30">First-time China visitors, beer lovers, beach + city mix</td><td class="py-2 px-3">Families, summer beach holidays</td><td class="py-2 px-3">Couples, photographers, island hopping</td><td class="py-2 px-3">Shopping, nightlife, urban explorers</td></tr>
+          <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Crowds</td><td class="py-2 px-3 bg-[var(--color-accent-subtle)]/30">Moderate (busy in August)</td><td class="py-2 px-3">Moderate (busy Jul-Aug)</td><td class="py-2 px-3">High on Gulangyu Island</td><td class="py-2 px-3">Very high, year-round</td></tr>
+          <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">English-friendly</td><td class="py-2 px-3 bg-[var(--color-accent-subtle)]/30">Moderate (tourist areas)</td><td class="py-2 px-3">Moderate</td><td class="py-2 px-3">Moderate</td><td class="py-2 px-3">Higher (more international)</td></tr>
+          <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Daily Budget</td><td class="py-2 px-3 bg-[var(--color-accent-subtle)]/30">$30-80</td><td class="py-2 px-3">$35-90</td><td class="py-2 px-3">$35-90</td><td class="py-2 px-3">$50-150</td></tr>
+          <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Unique selling point</td><td class="py-2 px-3 bg-[var(--color-accent-subtle)]/30">Tsingtao beer, German architecture, freshest seafood</td><td class="py-2 px-3">Russian-style squares, seafood, trams</td><td class="py-2 px-3">Gulangyu car-free island, tea culture</td><td class="py-2 px-3">The Bund, skyline, world-class dining</td></tr>
+          <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Verdict</td><td class="py-2 px-3 bg-[var(--color-accent-subtle)]/30 font-semibold text-[var(--color-accent)]">Best all-rounder for a relaxed China intro</td><td class="py-2 px-3">Good if Qingdao is out of the way</td><td class="py-2 px-3">Better for island vibes, less beer</td><td class="py-2 px-3">If you want the big city, this is it</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div></section>
+
+  <!-- Final CTA -->
+  <section class="section-sm border-t bg-[var(--color-accent-subtle)]">
+    <div class="container text-center max-w-2xl">
+      <h2 class="mb-3">Ready to plan your Qingdao trip?</h2>
+      <p class="body mb-6">Start with the 3-day itinerary — it covers the best of the city at a manageable pace and gives you a foundation you can customize. Or dive into the full travel guide for detailed budget breakdowns and insider tips.</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/qingdao-itineraries/3-days" class="btn-primary text-base px-6 py-3">View the 3-Day Itinerary</a>
+        <a href="/qingdao-travel-guide" class="btn-outline text-base px-6 py-3">Or read the full travel guide</a>
+      </div>
+      <p class="caption mt-6"><em>This guide is updated regularly. Last refresh: August 2026.</em></p>
+    </div>
+  </section>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style is:global>
+#homepage-map { z-index: 1; }
+.leaflet-popup-content { font-family: inherit; font-size: 14px; }
+.leaflet-popup-content h4 { margin: 0 0 3px; font-weight: 600; font-size: 14px; }
+.leaflet-popup-content p { margin: 0; font-size: 12px; color: #525252; }
+</style>
+
+<script>
+  document.querySelectorAll('.speak-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var parent = btn.closest('[data-speak]');
+      var text = parent ? parent.getAttribute('data-speak') : btn.parentElement.textContent.replace(btn.textContent, '').trim();
+      if (!text || !window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      var utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'zh-CN';
+      utterance.rate = 0.75;
+      utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+    });
+  });
+</script>
+<script>
+  // Handle hash-based anchor scrolling from other pages
+  (function() {
+    function scrollToAnchor() {
+      var hash = window.location.hash;
+      if (!hash) return;
+      setTimeout(function() {
+        var el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 400);
+    }
+    if (document.readyState === 'complete') {
+      scrollToAnchor();
+    } else {
+      window.addEventListener('load', scrollToAnchor);
+    }
+    window.addEventListener('hashchange', scrollToAnchor);
+  })();
+</script></Layout>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/js/homepage.js" defer></script>

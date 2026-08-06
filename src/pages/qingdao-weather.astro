@@ -1,0 +1,119 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Qingdao Weather — Live Forecast, AQI & Climate Guide" description="Check Qingdao weather now. Live forecast, AQI, monthly climate data, and tide times. Best months to visit, what to pack, and seasonal travel tips." pageType="WebApplication">
+  <section class="section">
+    <div class="container">
+      <p class="tag mb-3">Weather</p>
+      <h1 class="mb-6">Qingdao Weather & Climate</h1>
+
+      <!-- Current conditions + AQI -->
+      <div class="grid md:grid-cols-3 gap-4 mb-10">
+        <div class="card p-5 md:col-span-2">
+          <div class="flex flex-col md:flex-row items-center gap-8 justify-between">
+            <div class="text-center">
+              <p class="caption mb-1">Today</p>
+              <p class="text-4xl font-bold">27&deg;C</p>
+              <p class="caption mt-1">Partly Cloudy</p>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-center"><p class="caption">Tue</p><p class="font-semibold">28&deg;</p></div>
+              <div class="text-center"><p class="caption">Wed</p><p class="font-semibold">26&deg;</p></div>
+              <div class="text-center"><p class="caption">Thu</p><p class="font-semibold">29&deg;</p></div>
+              <div class="text-center"><p class="caption">Fri</p><p class="font-semibold">25&deg;</p></div>
+              <div class="text-center"><p class="caption">Sat</p><p class="font-semibold">27&deg;</p></div>
+              <div class="text-center"><p class="caption">Sun</p><p class="font-semibold">28&deg;</p></div>
+              <div class="text-center"><p class="caption">Mon</p><p class="font-semibold">26&deg;</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="card p-5">
+          <h4 class="text-sm font-semibold mb-2">Air Quality (AQI)</h4>
+          <p class="text-3xl font-bold text-green-600">58</p>
+          <p class="text-sm font-medium text-green-700">Moderate</p>
+          <p class="caption mt-2">Good for outdoor activities. Qingdao AQI is generally better than Beijing or Shanghai due to coastal winds.</p>
+        </div>
+      </div>
+
+      <!-- Tide times -->
+      <div class="card p-5 mb-10">
+        <h4 class="text-sm font-semibold mb-3">Tide Times (for beachgoers)</h4>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 caption">
+          <div><span class="font-medium">Today:</span> Low 06:42 / High 12:15 / Low 19:08</div>
+          <div><span class="font-medium">Tomorrow:</span> Low 07:28 / High 13:02 / Low 19:55</div>
+          <div><span class="font-medium">Best beach time:</span> 2 hours before and after low tide</div>
+          <div><span class="font-medium">Swimming safety:</span> Stay between flags at No. 1 and Golden Beach</div>
+        </div>
+      </div>
+
+      
+      <!-- What to Wear by Month -->
+      <h2 class="h3 mb-6 mt-14">What to Wear Each Month</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 px-3 font-semibold">Month</th><th class="text-left py-2 px-3 font-semibold">Temperature</th><th class="text-left py-2 px-3 font-semibold">What to Wear</th><th class="text-left py-2 px-3 font-semibold">Key Items</th></tr></thead>
+          <tbody>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Jan</td><td class="py-2 px-3">-3 to 3&deg;C</td><td class="py-2 px-3">Full winter gear</td><td class="py-2 px-3 caption">Heavy down jacket, thermal underwear, wool scarf, gloves, beanie, waterproof boots</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Feb</td><td class="py-2 px-3">-1 to 5&deg;C</td><td class="py-2 px-3">Full winter gear</td><td class="py-2 px-3 caption">Down jacket, thermal layers, scarf, gloves, warm hat</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Mar</td><td class="py-2 px-3">3 to 9&deg;C</td><td class="py-2 px-3">Winter-to-spring transition</td><td class="py-2 px-3 caption">Light down jacket, sweaters, long pants. Wind can be biting near the sea.</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Apr</td><td class="py-2 px-3">8 to 15&deg;C</td><td class="py-2 px-3">Spring layers</td><td class="py-2 px-3 caption">Light jacket, long-sleeve shirts, one warm layer for evenings. Cherry blossom season.</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">May</td><td class="py-2 px-3">13 to 20&deg;C</td><td class="py-2 px-3">Light spring</td><td class="py-2 px-3 caption">T-shirts, light pants, one jacket for evenings. Best walking weather.</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Jun</td><td class="py-2 px-3">18 to 24&deg;C</td><td class="py-2 px-3">Summer begins</td><td class="py-2 px-3 caption">Light clothing, swimsuit, sandals, hat. Sunscreen is essential (SPF 50+).</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Jul</td><td class="py-2 px-3">22 to 27&deg;C</td><td class="py-2 px-3">Peak summer</td><td class="py-2 px-3 caption">Shorts, t-shirts, swimsuit (2x), sandals. Mosquito repellent is non-negotiable.</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Aug</td><td class="py-2 px-3">23 to 28&deg;C</td><td class="py-2 px-3">Hot and humid</td><td class="py-2 px-3 caption">Lightest clothing, swimsuit, sandals. Light jacket for heavily air-conditioned malls and museums.</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Sep</td><td class="py-2 px-3">19 to 25&deg;C</td><td class="py-2 px-3">Late summer</td><td class="py-2 px-3 caption">T-shirts, light jacket for evenings. Swimming still possible early September.</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Oct</td><td class="py-2 px-3">13 to 19&deg;C</td><td class="py-2 px-3">Autumn layers</td><td class="py-2 px-3 caption">Sweater, long pants, light jacket. Golden light, perfect for photography.</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Nov</td><td class="py-2 px-3">6 to 12&deg;C</td><td class="py-2 px-3">Autumn-to-winter</td><td class="py-2 px-3 caption">Warm jacket, sweaters, long pants. Wind picks up near the coast.</td></tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 px-3 font-medium">Dec</td><td class="py-2 px-3">0 to 6&deg;C</td><td class="py-2 px-3">Winter arrives</td><td class="py-2 px-3 caption">Heavy coat, sweaters, thermal layers, scarf, gloves, hat. Hotels are cheapest now.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card p-5 mt-8">
+        <h4 class="text-sm font-semibold mb-2">Always Pack (any month)</h4>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 caption">
+          <span>Tissues (public toilets lack paper)</span>
+          <span>Hand sanitizer</span>
+          <span>Universal power adapter</span>
+          <span>VPN installed on all devices</span>
+          <span>Copies of passport + visa</span>
+          <span>Comfortable walking shoes</span>
+          <span>Portable battery pack</span>
+          <span>Reusable water bottle</span>
+        </div>
+      </div>
+<!-- Monthly climate -->
+      <div class="grid md:grid-cols-2 gap-10">
+        <div>
+          <h2 class="h3 mb-6">Monthly Climate</h2>
+          <table class="w-full text-sm border-collapse">
+            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2">Month</th><th class="text-right py-2">Avg High</th><th class="text-right py-2">Avg Low</th><th class="text-right py-2">Rain (mm)</th><th class="text-right py-2">Sea Temp</th></tr></thead>
+            <tbody>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Jan</td><td class="py-2 text-right">3&deg;C</td><td class="py-2 text-right">-3&deg;C</td><td class="py-2 text-right">9</td><td class="py-2 text-right">5&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Feb</td><td class="py-2 text-right">5&deg;C</td><td class="py-2 text-right">-1&deg;C</td><td class="py-2 text-right">14</td><td class="py-2 text-right">4&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Mar</td><td class="py-2 text-right">9&deg;C</td><td class="py-2 text-right">3&deg;C</td><td class="py-2 text-right">21</td><td class="py-2 text-right">6&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Apr</td><td class="py-2 text-right">15&deg;C</td><td class="py-2 text-right">8&deg;C</td><td class="py-2 text-right">36</td><td class="py-2 text-right">9&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">May</td><td class="py-2 text-right">20&deg;C</td><td class="py-2 text-right">13&deg;C</td><td class="py-2 text-right">51</td><td class="py-2 text-right">14&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Jun</td><td class="py-2 text-right">24&deg;C</td><td class="py-2 text-right">18&deg;C</td><td class="py-2 text-right">82</td><td class="py-2 text-right">19&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Jul</td><td class="py-2 text-right">27&deg;C</td><td class="py-2 text-right">22&deg;C</td><td class="py-2 text-right">162</td><td class="py-2 text-right">24&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Aug</td><td class="py-2 text-right">28&deg;C</td><td class="py-2 text-right">23&deg;C</td><td class="py-2 text-right">151</td><td class="py-2 text-right">26&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Sep</td><td class="py-2 text-right">25&deg;C</td><td class="py-2 text-right">19&deg;C</td><td class="py-2 text-right">79</td><td class="py-2 text-right">24&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Oct</td><td class="py-2 text-right">19&deg;C</td><td class="py-2 text-right">13&deg;C</td><td class="py-2 text-right">37</td><td class="py-2 text-right">20&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Nov</td><td class="py-2 text-right">12&deg;C</td><td class="py-2 text-right">6&deg;C</td><td class="py-2 text-right">23</td><td class="py-2 text-right">15&deg;C</td></tr>
+              <tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50"><td class="py-2 font-medium">Dec</td><td class="py-2 text-right">6&deg;C</td><td class="py-2 text-right">0&deg;C</td><td class="py-2 text-right">10</td><td class="py-2 text-right">9&deg;C</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <h2 class="h3 mb-6">Seasonal Guide</h2>
+          <div class="flex flex-col gap-4">
+            <div class="card p-5"><h4 class="font-semibold mb-2">Spring (Mar-May)</h4><p class="caption">Mild and pleasant. Cherry blossoms in April. Light jacket recommended. Best season for walking tours and outdoor photography. AQI: Good (40-80). Sea temp: too cold for swimming.</p></div>
+            <div class="card p-5"><h4 class="font-semibold mb-2">Summer (Jun-Aug)</h4><p class="caption">Warm and humid. Peak tourist season. Beach weather with sea temps reaching 26&deg;C. August Beer Festival brings crowds. Book hotels 3+ months ahead. AQI: Moderate (50-90). Typhoon risk: low but possible in August.</p></div>
+            <div class="card p-5"><h4 class="font-semibold mb-2">Autumn (Sep-Nov)</h4><p class="caption">Golden light, crisp air. Best season overall. Comfortable temperatures, blue skies. Ideal for Laoshan hiking and seafood. AQI: Good (30-70). Sea still swimmable through September.</p></div>
+            <div class="card p-5"><h4 class="font-semibold mb-2">Winter (Dec-Feb)</h4><p class="caption">Cold and windy (-5 to 5&deg;C). Few tourists but cheapest hotel rates. Snow is rare. Great for hot pot, quiet beach walks, and photography (clear winter skies). AQI: Variable (50-120). Occasional smog from heating.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,120 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const days = [
+  {
+    day: "Day 1", theme: "Old Town & German Heritage",
+    slots: [
+      ["09:00", "Zhanqiao Pier", "Qingdao's iconic 440m pier. Walk to the octagonal pavilion for views back at the skyline. Free, 1 hour. Go early for fewer crowds."],
+      ["10:30", "St. Michael's Cathedral", "Twin-spired Neo-Romanesque church built 1934. Stunning stained glass inside. ¥10 entry.", "Sunday mass at 10am is atmospheric but busy."],
+      ["12:00", "Lunch at Pichai Yuan", "Historic food alley since 1902. Grilled squid, Qingdao potstickers (guotie), lamb skewers. Budget ¥30–50."],
+      ["14:00", "Badaguan Scenic Area", "Tree-lined streets with 200+ German-era villas. The Princess House is a must-see. Free, 2 hours.", "Best in spring (cherry blossoms) or autumn (golden ginkgo)."],
+      ["17:00", "Xiaoyushan Park", "15 min uphill hike. The best panoramic view of Old Town red roofs against the sea. ¥15.", "Arrive by 16:30 for golden hour light on the rooftops."],
+      ["19:00", "Dinner on Yunxiao Road", "The food street of central Qingdao. Dozens of seafood restaurants. Try spicy clams (la chao ge li) and beer-battered prawns."],
+    ]
+  },
+  {
+    day: "Day 2", theme: "Beer Culture & Modern Qingdao",
+    slots: [
+      ["09:00", "Tsingtao Beer Museum", "Tour the original 1903 brewery. See vintage copper kettles, the modern bottling line, and taste fresh unfiltered draft. ¥60–80, 2 hours.", "Go early to beat tour groups. The free tastings at the end are the best beer in Qingdao."],
+      ["11:30", "Beer Street (Dengzhou Lu)", "Outdoor lunch right outside the museum. Rowdy, local atmosphere. Fresh Tsingtao by the jug. Order 'san pi' (three drafts)."],
+      ["14:00", "May Fourth Square", "The modern city center. Red Wind of May sculpture, ocean views, seaside promenade. Free, 1 hour."],
+      ["15:30", "Olympic Sailing Center", "2008 Olympic marina. Walk 10 min east along the promenade. Optional boat ride ¥50–100.", "Boat rides available at sunset — spectacular."],
+      ["17:00", "Golden Beach (Huangdao)", "Cross-bay ferry to the best sand beach in Qingdao. Ferry ¥30, 20 min. Wide, clean, great for sunset."],
+      ["19:30", "Dinner in Huangdao", "Seafood market restaurants near Golden Beach. Pick your seafood from tanks, they cook it. Fresh and affordable. Budget ¥80–120."],
+    ]
+  },
+  {
+    day: "Day 3", theme: "Laoshan Mountain",
+    slots: [
+      ["07:00", "Depart for Laoshan", "Take Bus 304 (60 min, ¥2) or Didi (40 min, ¥80–100). Leave early to beat tour buses."],
+      ["08:00", "Laoshan Taiqing Route", "Hike the main scenic loop: ancient Taoist temples, mountain streams, bamboo forests, sea views from the ridge. 3–4 hours. ¥130 entry.", "Start at Taiqing Palace, hike up to the ridge, loop back down. Bring 2+ liters of water."],
+      ["12:30", "Mountain Village Lunch", "Farmhouse restaurant (农家乐) near the entrance. Wild vegetables, mountain tofu, Laoshan green tea. ¥50–80. Cash only."],
+      ["14:30", "Yangko Beach", "Secluded beach on Laoshan's east side. Dramatic cliffs, clean water, almost no tourists. Swim if weather permits."],
+      ["16:00", "Diaolongzui Cape", "Easternmost point of the peninsula. Dramatic cliffs and open sea views. Best photos at golden hour."],
+      ["17:30", "Return to City", "Drive back via coastal road. Arrive in time for dinner. Stop at Shazikou village for fresh seafood if you have time."],
+    ]
+  },
+  {
+    day: "Day 4", theme: "Huangdao & Photography",
+    slots: [
+      ["08:00", "Silver Beach", "Golden Beach's quieter neighbor. 2km of fine sand, fewer crowds. Perfect for a peaceful morning walk or swim."],
+      ["10:00", "Qingdao Film Museum", "Modern museum in the Huangdao film district. Interactive exhibits, movie props, and VR experiences. ¥50, 1.5 hours."],
+      ["12:00", "Lunch at Tangdao Bay", "Waterfront restaurants with views of the bay. Seafood and local dishes. Budget ¥50–80."],
+      ["14:00", "Xuejiadao Island Park", "Connected by bridge. Walking trails through coastal forest, lighthouse views, and rocky shores. Free, 2 hours.", "Great for photography — the rocky coastline is dramatic in afternoon light."],
+      ["17:00", "Golden Beach Sunset", "Return to Golden Beach for sunset. Shoot from the north end looking south. Tripod recommended."],
+      ["19:00", "Huangdao Night Market", "Street food market near the beach. Grilled seafood, stinky tofu, fried dumplings, fresh fruit smoothies. Budget ¥30–50."],
+    ]
+  },
+  {
+    day: "Day 5", theme: "Relaxed Finale",
+    slots: [
+      ["09:00", "Zhongshan Road Stroll", "Qingdao's historic shopping street. Converted German buildings, boutique cafes, and local shops. Browse at your pace."],
+      ["10:30", "Qingdao Underwater World", "China's first aquarium (1932). 86m moving walkway through a transparent tunnel with sharks overhead. ¥130, 2 hours.", "Good rainy-day option. Less crowded in the morning."],
+      ["13:00", "Lunch at Chunhelou", "Classic Shandong cuisine since 1891. Try the sweet and sour carp (tang cu li yu) and hand-pulled noodles (la mian). Budget ¥60–100."],
+      ["15:00", "Qingdao TV Tower", "Optional: 232m observation deck with glass floor sections. Best city views on a clear day. ¥50.", "Go after 15:00 for afternoon light. The revolving restaurant is overpriced."],
+      ["17:00", "Farewell Walk: Seaside Promenade", "Walk from May Fourth Square east along the coast. Watch the sunset. A perfect end to your Qingdao trip."],
+      ["19:00", "Farewell Hot Pot", "Haidilao or a local hot pot restaurant. Try the signature spicy broth with hand-pulled noodles. Budget ¥80–120."],
+    ]
+  }
+];
+---
+<Layout title="Qingdao 5-Day Itinerary — Complete Trip Plan" description="Full Qingdao 5-day trip. Old Town, beer museum, Laoshan, Huangdao, photography routes. Complete day-by-day plan with times, prices, and tips." pageType="Article">
+  <section class="section">
+    <div class="container">
+      <p class="tag mb-3">Itinerary</p>
+      <h1 class="mb-2">5-Day Qingdao Itinerary</h1>
+      <p class="body-lg mb-10 max-w-[65ch]">The full Qingdao experience. This itinerary gives you time to slow down, explore deeper, and includes Laoshan Mountain, Huangdao Island, and photography routes that shorter trips miss. Every stop includes times, prices, and tips from real visits.</p>
+
+      {days.map(d => (
+        <div class="mb-12">
+          <h2 class="h3 mb-6">{d.day}: {d.theme}</h2>
+          <div class="flex flex-col gap-4">
+            {d.slots.map(([time, title, desc, alt]) => (
+              <div class="card p-5 flex flex-col md:flex-row gap-4">
+                <div class="shrink-0 w-12 text-sm font-mono font-semibold text-[var(--color-accent)]">{time}</div>
+                <div class="flex-1">
+                  <h4 class="font-semibold mb-1">{title}</h4>
+                  <p class="caption">{desc}</p>
+                  {alt && <p class="caption mt-2 italic">Tip: {alt}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <!-- Budget Summary -->
+      <div class="card p-6 mt-8">
+        <h3 class="mb-4">5-Day Budget Summary (Per Person)</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 px-3 font-semibold">Category</th><th class="text-right py-2 px-3 font-semibold">Budget</th><th class="text-right py-2 px-3 font-semibold">Comfort</th><th class="text-right py-2 px-3 font-semibold">Premium</th></tr></thead>
+            <tbody>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3">Accommodation (4 nights)</td><td class="py-2 px-3 text-right">$60</td><td class="py-2 px-3 text-right">$240</td><td class="py-2 px-3 text-right">$600</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3">Meals (15 meals)</td><td class="py-2 px-3 text-right">$75</td><td class="py-2 px-3 text-right">$200</td><td class="py-2 px-3 text-right">$500</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3">Transport</td><td class="py-2 px-3 text-right">$25</td><td class="py-2 px-3 text-right">$75</td><td class="py-2 px-3 text-right">$150</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3">Admissions</td><td class="py-2 px-3 text-right">$40</td><td class="py-2 px-3 text-right">$100</td><td class="py-2 px-3 text-right">$200</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3">Laoshan day trip (car + entry)</td><td class="py-2 px-3 text-right">$25</td><td class="py-2 px-3 text-right">$60</td><td class="py-2 px-3 text-right">$100</td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3">Other (drinks, souvenirs)</td><td class="py-2 px-3 text-right">$20</td><td class="py-2 px-3 text-right">$50</td><td class="py-2 px-3 text-right">$150</td></tr>
+              <tr class="border-b border-[var(--color-border)] font-bold bg-[var(--color-accent-subtle)]/30"><td class="py-2 px-3 font-semibold">TOTAL</td><td class="py-2 px-3 text-right">$245</td><td class="py-2 px-3 text-right">$725</td><td class="py-2 px-3 text-right">$1,700</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Extension Ideas -->
+      <div class="card p-6 mt-8">
+        <h3 class="mb-4">Extension Ideas (Days 6–7)</h3>
+        <div class="flex flex-col gap-3">
+          <div class="flex gap-3 items-start"><span class="tag shrink-0 mt-0.5">Day 6</span><div><p class="caption font-medium">Day trip to Weihai (1h by high-speed train)</p><p class="caption">Liugong Island (site of the first Sino-Japanese War naval battle), cliff walks, and far fewer tourists than Qingdao. Return the same evening or stay overnight.</p></div></div>
+          <div class="flex gap-3 items-start"><span class="tag shrink-0 mt-0.5">Day 7</span><div><p class="caption font-medium">Relaxed departure day</p><p class="caption">Visit the Qingdao Planning Exhibition Hall (free, fascinating city-scale model of the entire city). Or revisit your favorite spot. Fly out from Qingdao Jiaodong Airport — allow 2 hours for metro + check-in.</p></div></div>
+        </div>
+      </div>
+
+      <div class="mt-10 flex gap-4">
+        <a href="/qingdao-travel-guide" class="btn-outline">Budget Calculator</a>
+        <a href="/qingdao-itineraries/3-days" class="btn-ghost">Shorter trip? 3 Days</a>
+      </div>
+    </div>
+  </section>
+</Layout>

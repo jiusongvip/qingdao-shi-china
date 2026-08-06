@@ -1,0 +1,67 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import attractions from "../../data/attractions.json"
+
+export async function getStaticPaths() {
+  return attractions.map((a) => ({
+    params: { slug: a.slug },
+    props: { attraction: a },
+  }));
+}
+
+const { attraction } = Astro.props;
+const t = attraction.name;
+---
+
+<Layout title={t} description={attraction.desc} pageType="Article">
+  <section class="section">
+    <div class="container">
+      <p class="caption mb-4"><a href="/" class="hover:underline">Home</a> &rsaquo; <a href="/#attractions" class="hover:underline">Attractions</a> &rsaquo; <span>{attraction.name}</span></p>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div>
+          <p class="tag mb-3">{attraction.type}</p>
+          <h1 class="mb-4">{attraction.name}</h1>
+          <p class="text-lg mb-4" style="color: var(--color-accent)">{attraction.cn}</p>
+          <p class="body-lg leading-relaxed mb-6">{attraction.longDesc}</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">{attraction.area}</span><span class="tag">{attraction.price}</span><span class="tag">{attraction.duration}</span><span class="tag">{attraction.suit}</span>
+          </div>
+        </div>
+        <div><img src={attraction.photo} alt={attraction.name} class="rounded-lg w-full object-cover" loading="eager" width="800" height="533" style="aspect-ratio:3/2" /></div>
+      </div>
+
+      <div class="card p-6 md:p-8 mb-8">
+        <h2 class="h3 mb-4">Highlights</h2>
+        <ul class="grid md:grid-cols-2 gap-2">
+          {attraction.highlights.map((h) => (<li class="caption flex items-start gap-2"><span style="color:var(--color-accent)">&#10003;</span> {h}</li>))}
+        </ul>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="card p-6"><h2 class="h4 mb-3">How to Get There</h2><p class="caption leading-relaxed">{attraction.transport}</p></div>
+        <div class="card p-6"><h2 class="h4 mb-3">Best Time to Visit</h2><p class="caption leading-relaxed">{attraction.season}</p></div>
+      </div>
+
+      <h2 class="h3 mb-4">Nearby Food &amp; Drinks</h2>
+      <div class="grid md:grid-cols-2 gap-4 mb-12">
+        {attraction.nearby.map((n) => (<div class="card p-5"><h4 class="font-semibold text-sm mb-1">{n.name} <span class="caption font-normal">({n.cn})</span></h4><p class="text-xs" style="color:var(--color-accent)">{n.dist}</p><p class="caption text-xs">{n.desc}</p></div>))}
+      </div>
+
+      <h2 class="h3 mb-4">Where to Stay Nearby</h2>
+      <div class="grid md:grid-cols-2 gap-4 mb-12">
+        {attraction.hotels.map((h) => (<div class="card p-5"><h4 class="font-semibold text-sm mb-1">{h.name}</h4><p class="text-xs" style="color:var(--color-accent)">{h.dist} &middot; {h.price}</p></div>))}
+      </div>
+
+      <div class="card p-6 md:p-8 mb-12">
+        <h2 class="h3 mb-4">Local Tips</h2>
+        <ul class="space-y-2">{attraction.tips.map((t) => (<li class="body text-sm flex items-start gap-2"><span class="font-bold" style="color:var(--color-accent)">&rarr;</span> {t}</li>))}</ul>
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="/" class="btn-outline text-base px-6 py-3">Back to All Attractions</a>
+        <a href="/qingdao-travel-guide" class="btn-primary text-base px-6 py-3 ml-3">View Travel Guide</a>
+      </div>
+    </div>
+  </section>
+</Layout>

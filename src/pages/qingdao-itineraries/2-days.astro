@@ -1,0 +1,76 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const days = [
+  {
+    day: "Day 1",
+    theme: "Old Town & German Heritage",
+    slots: [
+      ["09:00", "Zhanqiao Pier", "Start at Qingdao's iconic pier. Walk to the end for views back to the Old Town skyline. Free, 1 hour."],
+      ["10:30", "St. Michael's Cathedral", "Walk 10 minutes inland to this twin-spired neo-Romanesque church. Entry ¥10.", "The cathedral area 10am mass can be busy on Sundays."],
+      ["12:00", "Lunch at Pichai Yuan", "Old food court area. Try the grilled squid and Qingdao-style potstickers (guotie)."],
+      ["14:00", "Badaguan Scenic Area", "Stroll through tree-lined streets with German villas. Best in spring (cherry blossoms) and autumn (golden leaves). Free, 2 hours."],
+      ["17:00", "Huiquan Bay at sunset", "Walk 5 min from Badaguan to the beach. Sunset over the bay, locals fishing off the rocks."],
+      ["19:00", "Dinner on Yunxiao Road", "The food street of central Qingdao. Seafood restaurants line both sides. Try the spicy clams and beer-battered prawns."],
+    ]
+  },
+  {
+    day: "Day 2",
+    theme: "Beer & Coastal Views",
+    slots: [
+      ["09:00", "Tsingtao Beer Museum", "The highlight. Tour the original 1903 brewery, see the bottling line, taste fresh draft beer. ¥60-80, 2 hours. Go early to beat the crowds."],
+      ["11:30", "Beer Street (Dengzhou Lu)", "Step outside the museum onto Beer Street. Lively lunch spot with outdoor seating and fresh Tsingtao on tap."],
+      ["14:00", "May Fourth Square", "The modern city center. Iconic red sculpture, ocean views, and the start of the seaside promenade. Free, 1 hour."],
+      ["15:30", "Olympic Sailing Center", "Walk 10 minutes east along the promenade. See the 2008 Olympic marina. Optional sailing experience."],
+      ["17:00", "Golden Beach (Huangdao)", "Take the cross-bay ferry (20 min) to Huangdao for the best sand beach in Qingdao. Wide, clean, great for sunset."],
+      ["19:30", "Dinner in Huangdao", "Seafood market restaurants near Golden Beach. Pick your seafood from tanks, they cook it. Fresh and affordable."],
+    ]
+  }
+];
+const alternatives = [
+  ["Zhanqiao Pier", "Skip if you dislike crowds. Replace with a walk along the seaside promenade from May Fourth Square instead."],
+  ["Badaguan", "If you prefer beaches over architecture, head straight to No. 1 Bathing Beach between Badaguan and Huiquan Bay."],
+  ["Tsingtao Beer Museum", "If you don't drink, try the Qingdao Underwater World (¥130) or the Naval Museum instead."],
+];
+---
+<Layout title="Qingdao 2-Day Itinerary — Weekend Trip Plan" description="Perfect Qingdao weekend trip. Day-by-day plan covering Old Town, German architecture, Tsingtao Beer Museum, beaches, and seafood." pageType="Article">
+  <section class="section">
+    <div class="container">
+      <p class="tag mb-3">Itinerary</p>
+      <h1 class="mb-2">2-Day Qingdao Itinerary</h1>
+      <p class="body-lg mb-10 max-w-[65ch]">The weekend escape. Old Town on Day 1, Beer and coast on Day 2. Perfect if you are flying in from Beijing or Shanghai for a quick trip.</p>
+
+      {days.map(d => (
+        <div class="mb-12">
+          <h2 class="h3 mb-6">{d.day}: {d.theme}</h2>
+          <div class="flex flex-col gap-4">
+            {d.slots.map(([time, title, desc, alt]) => (
+              <div class="card p-5 flex flex-col md:flex-row gap-4">
+                <div class="shrink-0 w-12 text-sm font-mono font-semibold text-[var(--color-accent)]">{time}</div>
+                <div class="flex-1">
+                  <h4 class="font-semibold mb-1">{title}</h4>
+                  <p class="caption">{desc}</p>
+                  {alt && <p class="caption mt-2 italic">Tip: {alt}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="card p-6 mt-8">
+        <h3 class="mb-4">Alternatives</h3>
+        {alternatives.map(([place, suggestion]) => (
+          <div class="py-2 border-b border-[var(--color-border)] last:border-0">
+            <span class="font-medium text-sm">{place}:</span>
+            <span class="caption ml-2">{suggestion}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 flex gap-4">
+        <a href="/qingdao-itineraries/3-days" class="btn-outline">Need more time? Try 3 Days</a>
+        <a href="/qingdao-travel-guide" class="btn-ghost">Back to Travel Guide</a>
+      </div>
+    </div>
+  </section>
+</Layout>
