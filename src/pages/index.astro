@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import attractionsJson from "../data/attractions.json";
 
 interface Attraction { name: string; type: string; area: string; price: string; duration: string; suit: string; photo: string; desc: string; }
 interface Hotel { name: string; area: string; type: string; price: string; beach: string; metro: string; english: string; bestFor: string; rating: number; }
@@ -56,31 +57,77 @@ const typeLabel = (t: string) => { const m: Record<string,string> = {luxury:"Lux
 const durLabel = (d: string) => { const m: Record<string,string> = {day:"Full day", half:"Half day"}; return m[d]||d; };
 const attrTypeLabel = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const foodTypeLabel = (t: string) => { const m: Record<string,string> = {seafood:"Seafood", beer:"Beer", street:"Street Food", western:"Western", chinese:"Chinese", cafe:"Cafe"}; return m[t]||t; };
-// Distinct images for each attraction (AI-generated, WebP)
-const getSlug = (n: string) => n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+// Use the authoritative slug from attractions.json so homepage links always match detail pages
+const normalize = (s: string) => s.toLowerCase().replace(/\\u2019|\\u2018|[\u2019\u2018`]/g, "'");
+const slugByKey = new Map(attractionsJson.map((a: any) => [normalize(a.name), a.slug]));
+const getSlug = (n: string) => {
+  const fromJson = slugByKey.get(normalize(n));
+  if (fromJson) return fromJson;
+  return n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+};
 ---
 
-<Layout>
+<Layout
+  title="Qingdao Shi China — City Guide, Weather, Travel Tips & Tsingtao Beer"
+  description="Discover Qingdao Shi, China: the coastal city that made Chinese beer famous. Travel guide, weather, 2-5 day itineraries, top attractions, hotels, food & insider tips."
+>
   <!-- Hero -->
   <section class="relative overflow-hidden bg-white">
     <div class="max-w-[1400px] mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-0 min-h-[85dvh] md:min-h-[75dvh]">
       <div class="flex flex-col justify-center py-12 md:py-20 md:pr-8">
-        <p class="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wide mb-4">Qingdao, Shandong Province</p>
-        <h1 class="text-4xl md:text-6xl tracking-tight leading-none font-bold text-[var(--color-text)]">Qingdao China:<br/>Beaches, Beer &<br/>Bavaria by the Sea</h1>
-        <p class="text-lg text-[var(--color-text-secondary)] leading-relaxed mt-6 max-w-[60ch]">The coastal city that made Chinese beer famous. German-era red-tiled roofs, sandy beaches, sacred Taoist mountains, and the freshest seafood in northern China — all wrapped in one of the country’s most relaxed waterfront cities.</p>
+        <nav class="caption text-xs mb-4" aria-label="Breadcrumb"><a href="/" class="text-[var(--color-accent)] hover:underline">Home</a> <span class="text-[var(--color-text-tertiary)]">/</span> <a href="/qingdao-attractions" class="text-[var(--color-accent)] hover:underline">Attractions</a> <span class="text-[var(--color-text-tertiary)]">/</span> <span class="text-[var(--color-text-tertiary)]">Qingdao Shi</span></nav>
+        <p class="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wide mb-4">Qingdao Shi, Shandong Province, China</p>
+        <h1 class="text-4xl md:text-6xl tracking-tight leading-none font-bold text-[var(--color-text)]">Qingdao Shi,<br/>China: Beaches, Beer &<br/>Bavaria by the Sea</h1>
+        <p class="text-lg text-[var(--color-text-secondary)] leading-relaxed mt-6 max-w-[60ch]">Qingdao Shi (青岛市, "Qingdao city") is the coastal city that made Chinese beer famous. German-era red-tiled roofs, sandy beaches, sacred Taoist mountains, and the freshest seafood in northern China — all wrapped in one of the country’s most relaxed waterfront cities.</p>
         <div class="flex flex-wrap gap-3 mt-8">
           <a href="/qingdao-itineraries/3-days" class="btn-primary text-base px-6 py-3">3-Day Itinerary</a>
           <a href="#why-qingdao" class="btn-outline text-base px-6 py-3">Why visit Qingdao?</a>
         </div>
-        <div class="flex gap-6 mt-10">
-          <div><p class="text-2xl font-bold text-[var(--color-text)]">9.4M</p><p class="caption">Population</p></div>
-          <div><p class="text-2xl font-bold text-[var(--color-text)]">May-Oct</p><p class="caption">Best Season</p></div>
-          <div><p class="text-2xl font-bold text-[var(--color-text)]">$30-80</p><p class="caption">Daily Budget</p></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4 mt-10">
+          <div><p class="text-xl font-bold text-[var(--color-text)]">9.4M</p><p class="caption">Population</p></div>
+          <div><p class="text-xl font-bold text-[var(--color-text)]">May-Oct</p><p class="caption">Best Season</p></div>
+          <div><p class="text-xl font-bold text-[var(--color-text)]">$30-80</p><p class="caption">Daily Budget</p></div>
+          <div><p class="text-xl font-bold text-[var(--color-text)]">CNY ¥</p><p class="caption">Currency</p></div>
+          <div><p class="text-xl font-bold text-[var(--color-text)]">Mandarin</p><p class="caption">Language</p></div>
+          <div><p class="text-xl font-bold text-[var(--color-text)]">UTC+8</p><p class="caption">Time Zone</p></div>
         </div>
       </div>
       <div class="relative h-64 md:h-full min-h-[320px]">
         <img src="/images/qingdao-coastline-hero.webp" alt="Qingdao coastline with red-tiled roofs and the sea" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
         <div class="absolute bottom-0 left-0 right-0 p-4 text-xs text-white/60 text-right">Last updated: August 2026 &mdash; based on multiple on-the-ground visits and ongoing research</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Answers (Top Questions) -->
+  <section class="section-sm border-t" id="quick-answers">
+    <div class="container">
+      <div class="mb-8"><p class="tag mb-3">Quick Answers</p><h2 class="h3">Your first questions about Qingdao, answered</h2></div>
+      <div class="grid md:grid-cols-2 gap-3">
+        <div class="card p-5">
+          <h3 class="text-sm font-semibold mb-2">Where is Qingdao?</h3>
+          <p class="caption text-xs leading-relaxed">Qingdao Shi (青岛市) is a coastal port city on the southern shore of the Shandong Peninsula in eastern China, on the Yellow Sea. It sits at the eastern entrance to Jiaozhou Bay, one of northern China's best natural harbors — roughly halfway between Beijing (3-4h by high-speed rail) and Shanghai.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="text-sm font-semibold mb-2">What is Qingdao famous for?</h3>
+          <p class="caption text-xs leading-relaxed">Three things: the Tsingtao Brewery (founded 1903 by Germans, China's most famous beer export), miles of sandy beaches, and German colonial architecture with red-tiled roofs. It hosted the 2008 Olympic sailing events.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="text-sm font-semibold mb-2">Why is it called "Qingdao Shi"?</h3>
+          <p class="caption text-xs leading-relaxed">"Shi" (市) is the Chinese word for city, so Qingdao Shi literally means "Qingdao City." The name Qingdao means "Green Island." You'll also see it romanized as Tsingtao (the beer spelling) — same place.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="text-sm font-semibold mb-2">When is the best time to visit?</h3>
+          <p class="caption text-xs leading-relaxed">May-June and September-October for the best weather and manageable crowds. July-August is peak beach and beer-festival season (hot and busy). November-April is cheap and quiet but cold. See the <a href="#best-time" class="text-[var(--color-accent)] hover:underline font-medium">season-by-season guide</a>.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="text-sm font-semibold mb-2">Is Qingdao worth visiting?</h3>
+          <p class="caption text-xs leading-relaxed">Yes — it's one of China's most relaxed, walkable cities and a gentler introduction than Beijing or Shanghai. You can hike a sacred Taoist mountain in the morning and be on the beach by afternoon. <a href="#why-qingdao" class="text-[var(--color-accent)] hover:underline font-medium">Read why travelers return</a>.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="text-sm font-semibold mb-2">Do foreigners need a visa?</h3>
+          <p class="caption text-xs leading-relaxed">Most nationalities need a Chinese tourist visa (L). Qingdao offers 144-hour visa-free transit at the airport for eligible countries when continuing to a third destination. <a href="/faq" class="text-[var(--color-accent)] hover:underline font-medium">Full visa FAQ</a>.</p>
+        </div>
       </div>
     </div>
   </section>
