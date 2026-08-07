@@ -1,49 +1,51 @@
 ---
 import Layout from "../layouts/Layout.astro";
 ---
-<Layout title="Qingdao Weather — Live Forecast, AQI & Climate Guide" description="Check Qingdao weather now. Live forecast, AQI, monthly climate data, and tide times. Best months to visit, what to pack, and seasonal travel tips." pageType="WebApplication">
+<Layout title="Qingdao Weather — Monthly Climate, AQI & Packing Guide" description="Qingdao climate guide: monthly temperatures, rainfall, sea temperature, AQI ranges, tide times, and what to pack. Find the best months to visit." pageType="WebApplication">
   <section class="section">
     <div class="container">
       <p class="tag mb-3">Weather</p>
       <h1 class="mb-6">Qingdao Weather & Climate</h1>
 
-      <!-- Current conditions + AQI -->
+      <!-- Typical summer snapshot (representative, not a live forecast) -->
       <div class="grid md:grid-cols-3 gap-4 mb-10">
         <div class="card p-5 md:col-span-2">
           <div class="flex flex-col md:flex-row items-center gap-8 justify-between">
             <div class="text-center">
-              <p class="caption mb-1">Today</p>
-              <p class="text-4xl font-bold">27&deg;C</p>
-              <p class="caption mt-1">Partly Cloudy</p>
+              <p class="caption mb-1">Typical Summer Day (Aug)</p>
+              <p class="text-4xl font-bold">26&deg;C</p>
+              <p class="caption mt-1">Average high &mdash; warm, humid, partly cloudy</p>
             </div>
             <div class="flex gap-6">
-              <div class="text-center"><p class="caption">Tue</p><p class="font-semibold">28&deg;</p></div>
-              <div class="text-center"><p class="caption">Wed</p><p class="font-semibold">26&deg;</p></div>
-              <div class="text-center"><p class="caption">Thu</p><p class="font-semibold">29&deg;</p></div>
-              <div class="text-center"><p class="caption">Fri</p><p class="font-semibold">25&deg;</p></div>
-              <div class="text-center"><p class="caption">Sat</p><p class="font-semibold">27&deg;</p></div>
-              <div class="text-center"><p class="caption">Sun</p><p class="font-semibold">28&deg;</p></div>
-              <div class="text-center"><p class="caption">Mon</p><p class="font-semibold">26&deg;</p></div>
+              <div class="text-center"><p class="caption">Jul</p><p class="font-semibold">27&deg;</p></div>
+              <div class="text-center"><p class="caption">Aug</p><p class="font-semibold">28&deg;</p></div>
+              <div class="text-center"><p class="caption">Sep</p><p class="font-semibold">25&deg;</p></div>
+              <div class="text-center"><p class="caption">Oct</p><p class="font-semibold">19&deg;</p></div>
+              <div class="text-center"><p class="caption">Nov</p><p class="font-semibold">12&deg;</p></div>
+              <div class="text-center"><p class="caption">Dec</p><p class="font-semibold">6&deg;</p></div>
+              <div class="text-center"><p class="caption">Jan</p><p class="font-semibold">3&deg;</p></div>
             </div>
           </div>
+          <p class="caption mt-4 text-[var(--color-text-tertiary)]">These are average high temperatures by month, not a real-time forecast. For live conditions, check a weather app before you go.</p>
         </div>
         <div class="card p-5">
-          <h4 class="text-sm font-semibold mb-2">Air Quality (AQI)</h4>
-          <p class="text-3xl font-bold text-green-600">58</p>
-          <p class="text-sm font-medium text-green-700">Moderate</p>
-          <p class="caption mt-2">Good for outdoor activities. Qingdao AQI is generally better than Beijing or Shanghai due to coastal winds.</p>
+          <h4 class="text-sm font-semibold mb-2">Typical AQI Range</h4>
+          <p class="text-3xl font-bold text-green-600">40&ndash;90</p>
+          <p class="text-sm font-medium text-green-700">Good to Moderate</p>
+          <p class="caption mt-2">Qingdao's air is generally better than Beijing or Shanghai thanks to coastal winds. Worst in winter (heating), best after rain.</p>
         </div>
       </div>
 
-      <!-- Tide times -->
+      <!-- Tide pattern -->
       <div class="card p-5 mb-10">
-        <h4 class="text-sm font-semibold mb-3">Tide Times (for beachgoers)</h4>
+        <h4 class="text-sm font-semibold mb-3">Typical Tide Pattern (for beachgoers)</h4>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 caption">
-          <div><span class="font-medium">Today:</span> Low 06:42 / High 12:15 / Low 19:08</div>
-          <div><span class="font-medium">Tomorrow:</span> Low 07:28 / High 13:02 / Low 19:55</div>
+          <div><span class="font-medium">Twice daily:</span> two low tides and two high tides</div>
           <div><span class="font-medium">Best beach time:</span> 2 hours before and after low tide</div>
+          <div><span class="font-medium">Big tidal range:</span> roughly 2&ndash;3m in Qingdao</div>
           <div><span class="font-medium">Swimming safety:</span> Stay between flags at No. 1 and Golden Beach</div>
         </div>
+        <p class="caption mt-3 text-[var(--color-text-tertiary)]">Exact times change daily; check a tide chart for your exact dates.</p>
       </div>
 
       
