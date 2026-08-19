@@ -13,7 +13,7 @@ export interface Props {
 const {
   title,
   description,
-  ogImage = "https://qingdao-shi-china.com/images/qingdao-og.webp",
+  ogImage = "https://www.qingdao-shi-china.com/images/qingdao-og.webp",
   pageType = "TouristDestination",
   noindex = false,
   faqItems = [],
@@ -22,8 +22,10 @@ const {
 const defaultTitle = "Qingdao China — Travel Guide, Weather & Itineraries";
 const defaultDescription = "Plan your Qingdao trip: 2-5 day itineraries, weather forecasts, top attractions, Tsingtao beer tours, maps & practical travel tips.";
 
-const siteUrl = "https://qingdao-shi-china.com";
-const currentUrl = siteUrl + Astro.url.pathname;
+const siteUrl = "https://www.qingdao-shi-china.com";
+const currentUrl = Astro.url.pathname === "/"
+  ? siteUrl
+  : siteUrl + Astro.url.pathname;
 const isHomepage = Astro.url.pathname === "/";
 const resolvedTitle = title || defaultTitle;
 const resolvedDescription = description || defaultDescription;
@@ -157,10 +159,10 @@ if (pageType === "TouristDestination") {
       </a>
       <!-- Desktop nav -->
       <div class="hidden md:flex items-center gap-6" id="desktop-nav">
-        <a href="/qingdao-travel-guide" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">Travel Guide</a>
-        <a href="/qingdao-itineraries/3-days" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">Itineraries</a>
-        <a href="/qingdao-weather" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">Weather</a>
-        <a href="/faq" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">FAQ</a>
+        <a href="/qingdao-travel-guide/" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">Travel Guide</a>
+        <a href="/qingdao-itineraries/3-days/" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">Itineraries</a>
+        <a href="/qingdao-weather/" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">Weather</a>
+        <a href="/faq/" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors">FAQ</a>
       </div>
       <!-- Mobile menu button -->
       <button class="md:hidden p-2 -mr-2" aria-label="Toggle menu" id="menu-toggle" aria-expanded="false">
@@ -175,14 +177,14 @@ if (pageType === "TouristDestination") {
     <!-- Mobile nav overlay -->
     <div id="mobile-nav" class="hidden md:hidden border-t border-[var(--color-border)] bg-[var(--color-surface)]">
       <div class="container py-4 flex flex-col gap-2">
-        <a href="/qingdao-travel-guide" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Travel Guide</a>
-        <a href="/qingdao-itineraries/3-days" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Itineraries</a>
-        <a href="/qingdao-weather" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Weather</a>
-        <a href="/qingdao-beer" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Beer Tour</a>
-        <a href="/qingdao-routes" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Routes</a>
-        <a href="/qingdao-transportation" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Transport</a>
-        <a href="/faq" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">FAQ</a>
-        <a href="/first-hour" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors font-medium text-[var(--color-accent)]">First Hour Guide</a>
+        <a href="/qingdao-travel-guide/" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Travel Guide</a>
+        <a href="/qingdao-itineraries/3-days/" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Itineraries</a>
+        <a href="/qingdao-weather/" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Weather</a>
+        <a href="/qingdao-beer/" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Beer Tour</a>
+        <a href="/qingdao-routes/" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Routes</a>
+        <a href="/qingdao-transportation/" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">Transport</a>
+        <a href="/faq/" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors">FAQ</a>
+        <a href="/first-hour/" class="text-sm py-2 px-3 rounded-lg hover:bg-[var(--color-accent-subtle)] transition-colors font-medium text-[var(--color-accent)]">First Hour Guide</a>
       </div>
     </div>
   </header>
@@ -198,35 +200,35 @@ if (pageType === "TouristDestination") {
         <div>
           <h4 class="text-sm font-semibold mb-3">Explore</h4>
           <div class="flex flex-col gap-2">
-            <a href="/qingdao-travel-guide" class="caption hover:text-[var(--color-text)] transition-colors">Travel Guide</a>
-            <a href="/qingdao-weather" class="caption hover:text-[var(--color-text)] transition-colors">Weather</a>
+            <a href="/qingdao-travel-guide/" class="caption hover:text-[var(--color-text)] transition-colors">Travel Guide</a>
+            <a href="/qingdao-weather/" class="caption hover:text-[var(--color-text)] transition-colors">Weather</a>
             <a href="/#attractions" class="caption hover:text-[var(--color-text)] transition-colors">Attractions</a>
-            <a href="/qingdao-beer" class="caption hover:text-[var(--color-text)] transition-colors">Beer Tour</a>
+            <a href="/qingdao-beer/" class="caption hover:text-[var(--color-text)] transition-colors">Beer Tour</a>
           </div>
         </div>
         <div>
           <h4 class="text-sm font-semibold mb-3">Plan</h4>
           <div class="flex flex-col gap-2">
-            <a href="/qingdao-itineraries/2-days" class="caption hover:text-[var(--color-text)] transition-colors">2-Day Trip</a>
-            <a href="/qingdao-itineraries/3-days" class="caption hover:text-[var(--color-text)] transition-colors">3-Day Trip</a>
-            <a href="/qingdao-itineraries/5-days" class="caption hover:text-[var(--color-text)] transition-colors">5-Day Trip</a>
-            <a href="/qingdao-transportation" class="caption hover:text-[var(--color-text)] transition-colors">Transportation</a>
+            <a href="/qingdao-itineraries/2-days/" class="caption hover:text-[var(--color-text)] transition-colors">2-Day Trip</a>
+            <a href="/qingdao-itineraries/3-days/" class="caption hover:text-[var(--color-text)] transition-colors">3-Day Trip</a>
+            <a href="/qingdao-itineraries/5-days/" class="caption hover:text-[var(--color-text)] transition-colors">5-Day Trip</a>
+            <a href="/qingdao-transportation/" class="caption hover:text-[var(--color-text)] transition-colors">Transportation</a>
           </div>
         </div>
         <div>
           <h4 class="text-sm font-semibold mb-3">Routes</h4>
           <div class="flex flex-col gap-2">
-            <a href="/qingdao-routes/walking" class="caption hover:text-[var(--color-text)] transition-colors">Walking Tour</a>
-            <a href="/qingdao-routes/cycling" class="caption hover:text-[var(--color-text)] transition-colors">Cycling Route</a>
-            <a href="/qingdao-routes/driving" class="caption hover:text-[var(--color-text)] transition-colors">Driving Route</a>
-            <a href="/qingdao-routes/photography" class="caption hover:text-[var(--color-text)] transition-colors">Photo Spots</a>
+            <a href="/qingdao-routes/walking/" class="caption hover:text-[var(--color-text)] transition-colors">Walking Tour</a>
+            <a href="/qingdao-routes/cycling/" class="caption hover:text-[var(--color-text)] transition-colors">Cycling Route</a>
+            <a href="/qingdao-routes/driving/" class="caption hover:text-[var(--color-text)] transition-colors">Driving Route</a>
+            <a href="/qingdao-routes/photography/" class="caption hover:text-[var(--color-text)] transition-colors">Photo Spots</a>
           </div>
         </div>
         <div>
           <h4 class="text-sm font-semibold mb-3">Help</h4>
           <div class="flex flex-col gap-2">
-            <a href="/faq" class="caption hover:text-[var(--color-text)] transition-colors">FAQ</a>
-            <a href="/first-hour" class="caption font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors">First Hour Guide</a>
+            <a href="/faq/" class="caption hover:text-[var(--color-text)] transition-colors">FAQ</a>
+            <a href="/first-hour/" class="caption font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors">First Hour Guide</a>
           </div>
         </div>
       </div>

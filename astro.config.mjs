@@ -3,12 +3,12 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   integrations: [
     tailwind(),
     sitemap({
       filter: (page) => !page.includes('/api/'),
     }),
   ],
-  site: 'https://qingdao-shi-china.com',
+  site: 'https://www.qingdao-shi-china.com',
 });
