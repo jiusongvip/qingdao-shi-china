@@ -1,6 +1,7 @@
 [
   {
     "slug": "zhanqiao-pier",
+    "seoTitle": "Zhanqiao Pier — Qingdao’s Iconic Seafront Landmark",
     "name": "Zhanqiao Pier",
     "cn": "栈桥 (Zhan Qiao)",
     "type": "Landmark",
@@ -54,6 +55,7 @@
   },
   {
     "slug": "badaguan",
+    "seoTitle": "Badaguan Scenic Area — Qingdao’s Old Town Villas",
     "name": "Badaguan Scenic Area",
     "cn": "八大关 (Ba Da Guan)",
     "type": "Architecture",
@@ -107,6 +109,7 @@
   },
   {
     "slug": "tsingtao-beer-museum",
+    "seoTitle": "Tsingtao Beer Museum — Tickets, Tours & Tips",
     "name": "Tsingtao Beer Museum",
     "cn": "青岛啤酒博物馆",
     "type": "Beer",
@@ -160,6 +163,7 @@
   },
   {
     "slug": "laoshan-mountain",
+    "seoTitle": "Laoshan Mountain — Sacred Peak Day Trip Guide",
     "name": "Laoshan Mountain",
     "cn": "崂山 (Lao Shan)",
     "type": "Nature",
@@ -212,6 +216,7 @@
   },
   {
     "slug": "may-fourth-square",
+    "seoTitle": "May Fourth Square — Qingdao’s City Center",
     "name": "May Fourth Square",
     "cn": "五四广场",
     "type": "Landmark",
@@ -265,6 +270,7 @@
   },
   {
     "slug": "golden-beach",
+    "seoTitle": "Golden Beach Qingdao — Huangdao Visitor Guide",
     "name": "Golden Beach",
     "cn": "金沙滩 (Jin Sha Tan)",
     "type": "Beach",
@@ -318,6 +324,7 @@
   },
   {
     "slug": "st-michaels-cathedral",
+    "seoTitle": "St. Michael’s Cathedral — Qingdao German-Era Church",
     "name": "St. Michael’s Cathedral",
     "cn": "圣弥厄尔大教堂",
     "type": "Architecture",
@@ -326,7 +333,7 @@
     "duration": "1 hour",
     "suit": "Everyone",
     "photo": "/images/st-michaels-cathedral.webp",
-    "desc": "Twin-spired Neo-Romanesque cathedral built 1932-1934 by German architects. Largest Catholic church in Qingdao. Stained glass, vaulted ceilings, bell tower climb.",
+    "desc": "Twin-spired Neo-Romanesque cathedral built 1932-1934 by German architects. Largest Catholic church in Qingdao. Stained glass, vaulted ceilings, a bell tower.",
     "longDesc": "St. Michael’s Cathedral is the largest Catholic church in Qingdao, built 1932-1934 by German architects. Twin-spired Neo-Romanesque structure dominates the Old Town skyline. Interior: soaring vaulted ceilings, intricate stained glass, pipe organ. Active parish — Sunday Mass in Chinese, visitors welcome. The square in front is a popular wedding photography spot. Climb the bell tower for a panorama of Old Town rooftops. Y=10 entry.",
     "highlights": [
       "Neo-Romanesque twin spires — most photographed church in Qingdao",
@@ -377,6 +384,7 @@
   },
   {
     "slug": "underwater-world",
+    "seoTitle": "Qingdao Underwater World — Aquarium Visitor Guide",
     "name": "Underwater World",
     "cn": "青岛海底世界",
     "type": "Museum",
@@ -385,7 +393,7 @@
     "duration": "3 hours",
     "suit": "Families",
     "photo": "/images/underwater-world.webp",
-    "desc": "China's first aquarium (1932) with 86m moving walkway through a transparent tunnel. Sharks, rays, and sea turtles glide overhead. Jellyfish gallery and touch pool.",
+    "desc": "China's first aquarium (1932) with 86m moving walkway through a transparent tunnel. Sharks, rays and turtles glide overhead. Jellyfish gallery, touch pool.",
     "longDesc": "Built around China’s first aquarium (1932), Underwater World features an 86m moving walkway through a transparent tunnel — sharks, rays, sea turtles, and fish glide overhead. Exhibits: marine biology, jellyfish gallery, touch pool, daily feeding shows. Entirely indoors — excellent rainy-day option. Compared to newer mega-aquariums, Underwater World feels older and more academic, but the tunnel experience and the historic 1932 building give it unique character. Plan 2-3 hours.",
     "highlights": [
       "86m transparent tunnel with sharks and rays overhead",
@@ -431,6 +439,7 @@
   },
   {
     "slug": "olympic-sailing-center",
+    "seoTitle": "Olympic Sailing Center — Marina & Night Lights",
     "name": "Olympic Sailing Center",
     "cn": "奥帆中心",
     "type": "Landmark",
@@ -439,7 +448,7 @@
     "duration": "1 hour",
     "suit": "Everyone",
     "photo": "/images/olympic-sailing-center.webp",
-    "desc": "2008 Olympic sailing venue, now a lively marina with yachts, waterfront bars, and boat rides. Best at sunset when the torch tower glows. Harbor cruises available.",
+    "desc": "2008 Olympic sailing venue, now a lively marina with yachts, waterfront bars, and boat rides. Best at sunset when the torch tower glows; harbor cruises.",
     "longDesc": "Built for the 2008 Beijing Olympic sailing events, the Olympic Sailing Center is now a lively marina and entertainment district. Yachts, sailboats, waterfront bars. Landmark torch tower illuminated at night. Boat rides: Y=50 for 30-min harbor cruise. Connects to May Fourth Square via seaside promenade — a pleasant 10-min walk. At sunset, the marina fills with locals and tourists. One of Qingdao’s best spots for an evening drink with a view.",
     "highlights": [
       "Olympic torch tower (illuminated at night)",
@@ -483,6 +492,7 @@
   },
   {
     "slug": "xiaoyushan-park",
+    "seoTitle": "Xiaoyushan Park — Views Over Old Qingdao",
     "name": "Xiaoyushan Park",
     "cn": "小鱼山公园",
     "type": "Nature",
@@ -491,7 +501,7 @@
     "duration": "1 hour",
     "suit": "Photographers",
     "photo": "/images/xiaoyushan-park.webp",
-    "desc": "Hilltop park with the best panoramic view of Old Town red-tiled roofs against the sea. Three-story pagoda for 360-degree views. Compact, 45-min visit, great value.",
+    "desc": "Hilltop park with the best panoramic view of Old Town red-tiled roofs against the sea. Three-story pagoda for 360-degree views. A compact 45-min visit.",
     "longDesc": "Xiaoyushan (Little Fish Hill) Park delivers the single best view in Qingdao: a panorama of Old Town red-tiled roofs cascading down to the sea, with Zhanqiao Pier on one side and the modern skyline on the other. Three-story viewing pagoda (Chao Lan Ge) offers 360-degree views. At golden hour, the red tiles glow and the sea turns golden — the shot every photographer comes for. Compact park (45-60 min), 5-min climb from street. At Y=15, one of the best value experiences in Qingdao.",
     "highlights": [
       "360-degree panorama from three-story pagoda",
@@ -541,6 +551,7 @@
   },
   {
     "slug": "qingdao-tv-tower",
+    "seoTitle": "Qingdao TV Tower — 360-Degree City Views Guide",
     "name": "Qingdao TV Tower",
     "cn": "青岛电视塔",
     "type": "Landmark",
@@ -594,6 +605,7 @@
   },
   {
     "slug": "silver-beach",
+    "seoTitle": "Silver Beach Qingdao — What to Know Before You Go",
     "name": "Silver Beach",
     "cn": "银沙滩 (Yin Sha Tan)",
     "type": "Beach",

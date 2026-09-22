@@ -71,6 +71,7 @@ const getSlug = (n: string) => {
   title="Qingdao Shi China — City Guide, Weather & Tsingtao Beer 2026"
   description="Discover Qingdao Shi, China: coastal city famous for Tsingtao Beer. Travel guide with weather, attractions, hotels, food & insider tips."
 >
+  <link slot="head" rel="preload" as="image" href="/images/qingdao-coastline-hero.webp" fetchpriority="high" />
   <!-- Hero -->
   <section class="relative overflow-hidden bg-white">
     <div class="max-w-[1400px] mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-0 min-h-[85dvh] md:min-h-[75dvh]">
@@ -93,7 +94,7 @@ const getSlug = (n: string) => {
         </div>
       </div>
       <div class="relative h-64 md:h-full min-h-[320px]">
-        <img src="/images/qingdao-coastline-hero.webp" alt="Qingdao coastline with red-tiled roofs and the sea" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+        <img src="/images/qingdao-coastline-hero.webp" alt="Qingdao coastline with red-tiled roofs and the sea" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
         <div class="absolute bottom-0 left-0 right-0 p-4 text-xs text-white/60 text-right">Last updated: August 2026 &mdash; based on multiple on-the-ground visits and ongoing research</div>
       </div>
     </div>
@@ -141,19 +142,19 @@ const getSlug = (n: string) => {
           <p class="text-xs font-semibold text-[var(--color-accent)] uppercase mb-2">Spring (Mar-May)</p>
           <p class="text-lg font-bold mb-1">8–20&deg;C</p>
           <p class="caption text-xs leading-relaxed">Cherry blossoms in April, comfortable temperatures. Occasional sandstorms from the north in early March. A light jacket is usually enough by May.</p>
-          <p class="caption text-xs mt-2"><span class="text-green-600 font-semibold">Good time</span> &mdash; fewer crowds, fair weather</p>
+          <p class="caption text-xs mt-2"><span class="text-green-700 font-semibold">Good time</span> &mdash; fewer crowds, fair weather</p>
         </div>
         <div class="card p-5 ring-2 ring-[var(--color-accent)]">
           <p class="text-xs font-semibold text-[var(--color-accent)] uppercase mb-2">Summer (Jun-Aug)</p>
           <p class="text-lg font-bold mb-1">22–28&deg;C</p>
           <p class="caption text-xs leading-relaxed">Peak beach season. The Tsingtao Beer Festival runs late July through August. Hot, humid, and crowded. Book hotels 2–3 months ahead for August.</p>
-          <p class="caption text-xs mt-2"><span class="text-amber-600 font-semibold">Peak season</span> &mdash; book early, expect crowds</p>
+          <p class="caption text-xs mt-2"><span class="text-amber-700 font-semibold">Peak season</span> &mdash; book early, expect crowds</p>
         </div>
         <div class="card p-5 ring-2 ring-[var(--color-accent)]">
           <p class="text-xs font-semibold text-[var(--color-accent)] uppercase mb-2">Autumn (Sep-Nov)</p>
           <p class="text-lg font-bold mb-1">10–22&deg;C</p>
           <p class="caption text-xs leading-relaxed">The best season. Clear blue skies, golden light, comfortable temperatures. Swimming still possible through September. Perfect for photography at Badaguan.</p>
-          <p class="caption text-xs mt-2"><span class="text-green-600 font-semibold">Best time</span> &mdash; ideal weather, moderate crowds</p>
+          <p class="caption text-xs mt-2"><span class="text-green-700 font-semibold">Best time</span> &mdash; ideal weather, moderate crowds</p>
         </div>
         <div class="card p-5">
           <p class="text-xs font-semibold text-[var(--color-accent)] uppercase mb-2">Winter (Dec-Feb)</p>
@@ -304,7 +305,7 @@ const getSlug = (n: string) => {
       </div>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="attr-grid">
-{attractions.map(a => { const s = getSlug(a.name); return (<Fragment><a href={`/qingdao-attractions/${s}`} class="card group" data-type={a.type}><div class="aspect-[3/2] overflow-hidden"><img src={a.photo} alt={a.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" /></div><div class="p-4"><div class="flex items-center justify-between mb-1"><h4 class="text-sm font-semibold">{a.name}</h4><span class="tag">{durLabel(a.duration)}</span></div><div class="flex items-center gap-2 caption mt-2"><span class="tag">{attrTypeLabel(a.type)}</span><span>{a.area === "shinan" ? "Shinan" : a.area === "shibei" ? "Shibei" : a.area === "laoshan" ? "Laoshan" : a.area === "huangdao" ? "Huangdao" : a.area}</span><span>{a.price === "free" ? "Free" : "¥" + a.price}</span></div><p class="caption text-xs leading-relaxed mt-3 line-clamp-3">{a.desc}</p></div></a></Fragment>); })}
+{attractions.map(a => { const s = getSlug(a.name); return (<Fragment><a href={`/qingdao-attractions/${s}/`} class="card group" data-type={a.type}><div class="aspect-[3/2] overflow-hidden"><img src={a.photo} alt={a.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" /></div><div class="p-4"><div class="flex items-center justify-between mb-1"><h3 class="text-sm font-semibold">{a.name}</h3><span class="tag">{durLabel(a.duration)}</span></div><div class="flex items-center gap-2 caption mt-2"><span class="tag">{attrTypeLabel(a.type)}</span><span>{a.area === "shinan" ? "Shinan" : a.area === "shibei" ? "Shibei" : a.area === "laoshan" ? "Laoshan" : a.area === "huangdao" ? "Huangdao" : a.area}</span><span>{a.price === "free" ? "Free" : "¥" + a.price}</span></div><p class="caption text-xs leading-relaxed mt-3 line-clamp-3">{a.desc}</p></div></a></Fragment>); })}
     </div>
   </div></section>
 
@@ -313,7 +314,7 @@ const getSlug = (n: string) => {
     <div class="mb-10"><p class="tag mb-3">Where to Stay</p><h2>Compare 8 hotels across Qingdao</h2><p class="body mt-3 max-w-[65ch]">Qingdao has accommodation for every budget, from $15 hostel beds in Old Town to $250+ five-star rooms on the waterfront. Shinan District puts you within walking distance of most attractions. Laoshan is ideal for hikers and sea views. Shibei offers good value with easy metro access. Ratings below are aggregated from major booking platforms.</p></div>
     <div class="overflow-x-auto">
       <table class="w-full text-sm border-collapse">
-        <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-3 px-3 font-semibold">Hotel</th><th class="text-left py-3 px-3 font-semibold hidden md:table-cell">Area</th><th class="text-left py-3 px-3 font-semibold hidden md:table-cell">Type</th><th class="text-left py-3 px-3 font-semibold">Price/Night</th><th class="text-left py-3 px-3 font-semibold hidden lg:table-cell">To Beach</th><th class="text-left py-3 px-3 font-semibold hidden lg:table-cell">English</th><th class="text-left py-3 px-3 font-semibold">Rating</th></tr></thead>
+        <thead><tr class="border-b border-[var(--color-border)]"><th scope="col" class="text-left py-3 px-3 font-semibold">Hotel</th><th scope="col" class="text-left py-3 px-3 font-semibold hidden md:table-cell">Area</th><th scope="col" class="text-left py-3 px-3 font-semibold hidden md:table-cell">Type</th><th scope="col" class="text-left py-3 px-3 font-semibold">Price/Night</th><th scope="col" class="text-left py-3 px-3 font-semibold hidden lg:table-cell">To Beach</th><th scope="col" class="text-left py-3 px-3 font-semibold hidden lg:table-cell">English</th><th scope="col" class="text-left py-3 px-3 font-semibold">Rating</th></tr></thead>
         <tbody>
           {hotels.map(h => { return (<tr class="border-b border-[var(--color-border)] hover:bg-[var(--color-accent-subtle)]/50 transition-colors"><td class="py-3 px-3 font-medium">{h.name}</td><td class="py-3 px-3 hidden md:table-cell caption">{areaLabel(h.area)}</td><td class="py-3 px-3 hidden md:table-cell"><span class="tag">{typeLabel(h.type)}</span></td><td class="py-3 px-3">{h.price}</td><td class="py-3 px-3 hidden lg:table-cell caption">{h.beach}</td><td class="py-3 px-3 hidden lg:table-cell caption">{h.english}</td><td class="py-3 px-3 font-semibold">{h.rating}</td></tr>); })}
         </tbody>
@@ -520,7 +521,7 @@ const getSlug = (n: string) => {
     <div class="mb-10"><p class="tag mb-3">Compare</p><h2>Qingdao vs other Chinese cities</h2><p class="body mt-3 max-w-[65ch]">Is Qingdao worth adding to your China itinerary? Here is how it compares to Dalian, Xiamen, and Shanghai across vibe, budget, crowds, and more. The short answer: Qingdao is the best all-rounder for travelers who want beach, culture, and affordability in one place.</p></div>
     <div class="overflow-x-auto">
       <table class="w-full text-sm border-collapse">
-        <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-3 px-3 font-semibold"></th><th class="text-left py-3 px-3 font-semibold bg-[var(--color-accent-subtle)]/50">Qingdao</th><th class="text-left py-3 px-3 font-semibold">Dalian</th><th class="text-left py-3 px-3 font-semibold">Xiamen</th><th class="text-left py-3 px-3 font-semibold">Shanghai</th></tr></thead>
+        <thead><tr class="border-b border-[var(--color-border)]"><th scope="col" class="text-left py-3 px-3 font-semibold"></th><th scope="col" class="text-left py-3 px-3 font-semibold bg-[var(--color-accent-subtle)]/50">Qingdao</th><th scope="col" class="text-left py-3 px-3 font-semibold">Dalian</th><th scope="col" class="text-left py-3 px-3 font-semibold">Xiamen</th><th scope="col" class="text-left py-3 px-3 font-semibold">Shanghai</th></tr></thead>
         <tbody>
           <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Vibe</td><td class="py-2 px-3 bg-[var(--color-accent-subtle)]/30">Coastal, laid-back, beer culture</td><td class="py-2 px-3">Seaside resort, Russian influence</td><td class="py-2 px-3">Tropical island feel, artsy</td><td class="py-2 px-3">Megacity, futuristic, fast-paced</td></tr>
           <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Best for</td><td class="py-2 px-3 bg-[var(--color-accent-subtle)]/30">First-time China visitors, beer lovers, beach + city mix</td><td class="py-2 px-3">Families, summer beach holidays</td><td class="py-2 px-3">Couples, photographers, island hopping</td><td class="py-2 px-3">Shopping, nightlife, urban explorers</td></tr>
@@ -559,11 +560,11 @@ const getSlug = (n: string) => {
       <p class="caption mt-6"><em>This guide is updated regularly. Last refresh: August 2026.</em></p>
     </div>
   </section>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css" media="print" onload="this.media='all'" />
 <style is:global>
 #homepage-map { z-index: 1; }
 .leaflet-popup-content { font-family: inherit; font-size: 14px; }
-.leaflet-popup-content h4 { margin: 0 0 3px; font-weight: 600; font-size: 14px; }
+.leaflet-popup-content .popup-title { display: block; margin: 0 0 3px; font-weight: 600; font-size: 14px; }
 .leaflet-popup-content p { margin: 0; font-size: 12px; color: #525252; }
 </style>
 
@@ -603,5 +604,5 @@ const getSlug = (n: string) => {
     window.addEventListener('hashchange', scrollToAnchor);
   })();
 </script></Layout>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script defer src="/vendor/leaflet/leaflet.js"></script>
 <script src="/js/homepage.js" defer></script>

@@ -146,6 +146,7 @@ if (pageType === "TouristDestination") {
   })}></script>
 
   <!-- No manual font preload: Geist is bundled by Astro from @fontsource/geist-sans -->
+  <slot name="head" />
 </head>
 <body class="min-h-dvh flex flex-col">
   <!-- Skip to content -->
@@ -198,7 +199,7 @@ if (pageType === "TouristDestination") {
     <div class="container py-12 md:py-16">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-          <h4 class="text-sm font-semibold mb-3">Explore</h4>
+          <h3 class="text-sm font-semibold mb-3">Explore</h3>
           <div class="flex flex-col gap-2">
             <a href="/qingdao-travel-guide/" class="caption hover:text-[var(--color-text)] transition-colors">Travel Guide</a>
             <a href="/qingdao-weather/" class="caption hover:text-[var(--color-text)] transition-colors">Weather</a>
@@ -207,7 +208,7 @@ if (pageType === "TouristDestination") {
           </div>
         </div>
         <div>
-          <h4 class="text-sm font-semibold mb-3">Plan</h4>
+          <h3 class="text-sm font-semibold mb-3">Plan</h3>
           <div class="flex flex-col gap-2">
             <a href="/qingdao-itineraries/2-days/" class="caption hover:text-[var(--color-text)] transition-colors">2-Day Trip</a>
             <a href="/qingdao-itineraries/3-days/" class="caption hover:text-[var(--color-text)] transition-colors">3-Day Trip</a>
@@ -216,7 +217,7 @@ if (pageType === "TouristDestination") {
           </div>
         </div>
         <div>
-          <h4 class="text-sm font-semibold mb-3">Routes</h4>
+          <h3 class="text-sm font-semibold mb-3">Routes</h3>
           <div class="flex flex-col gap-2">
             <a href="/qingdao-routes/walking/" class="caption hover:text-[var(--color-text)] transition-colors">Walking Tour</a>
             <a href="/qingdao-routes/cycling/" class="caption hover:text-[var(--color-text)] transition-colors">Cycling Route</a>
@@ -225,7 +226,7 @@ if (pageType === "TouristDestination") {
           </div>
         </div>
         <div>
-          <h4 class="text-sm font-semibold mb-3">Help</h4>
+          <h3 class="text-sm font-semibold mb-3">Help</h3>
           <div class="flex flex-col gap-2">
             <a href="/faq/" class="caption hover:text-[var(--color-text)] transition-colors">FAQ</a>
             <a href="/first-hour/" class="caption font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors">First Hour Guide</a>

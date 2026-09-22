@@ -55,7 +55,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
         <div class="overflow-x-auto mb-4">
           <table class="w-full text-sm border-collapse">
-            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 px-3 font-semibold">Route</th><th class="text-right py-2 px-3 font-semibold">Duration</th><th class="text-right py-2 px-3 font-semibold">Price (2nd class)</th><th class="text-right py-2 px-3 font-semibold">Frequency</th></tr></thead>
+            <thead><tr class="border-b border-[var(--color-border)]"><th scope="col" class="text-left py-2 px-3 font-semibold">Route</th><th scope="col" class="text-right py-2 px-3 font-semibold">Duration</th><th scope="col" class="text-right py-2 px-3 font-semibold">Price (2nd class)</th><th scope="col" class="text-right py-2 px-3 font-semibold">Frequency</th></tr></thead>
             <tbody>
               <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3">Beijing → Qingdao</td><td class="py-2 px-3 text-right">3–3.5h</td><td class="py-2 px-3 text-right">¥250–350</td><td class="py-2 px-3 text-right">Every 30 min</td></tr>
               <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3">Shanghai → Qingdao</td><td class="py-2 px-3 text-right">5–5.5h</td><td class="py-2 px-3 text-right">¥300–400</td><td class="py-2 px-3 text-right">Hourly</td></tr>
@@ -127,7 +127,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
         <div class="overflow-x-auto mb-4">
           <table class="w-full text-sm border-collapse">
-            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 px-3 font-semibold">Line</th><th class="text-left py-2 px-3 font-semibold">Route</th><th class="text-left py-2 px-3 font-semibold">Key Stations for Tourists</th></tr></thead>
+            <thead><tr class="border-b border-[var(--color-border)]"><th scope="col" class="text-left py-2 px-3 font-semibold">Line</th><th scope="col" class="text-left py-2 px-3 font-semibold">Route</th><th scope="col" class="text-left py-2 px-3 font-semibold">Key Stations for Tourists</th></tr></thead>
             <tbody>
               <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Line 1</td><td class="py-2 px-3">North–South</td><td class="py-2 px-3 caption">Qingdao North Station, Qingdao Station</td></tr>
               <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Line 2</td><td class="py-2 px-3">East–West</td><td class="py-2 px-3 caption">May Fourth Square, Olympic Sailing Center</td></tr>
@@ -250,14 +250,14 @@ import Layout from "../layouts/Layout.astro";
         <h2 class="h3 mb-4">Transport Comparison</h2>
         <div class="overflow-x-auto">
           <table class="w-full text-sm border-collapse">
-            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 px-3 font-semibold">Method</th><th class="text-left py-2 px-3 font-semibold">Best For</th><th class="text-right py-2 px-3 font-semibold">Cost</th><th class="text-left py-2 px-3 font-semibold">Tourist-Friendly?</th></tr></thead>
+            <thead><tr class="border-b border-[var(--color-border)]"><th scope="col" class="text-left py-2 px-3 font-semibold">Method</th><th scope="col" class="text-left py-2 px-3 font-semibold">Best For</th><th scope="col" class="text-right py-2 px-3 font-semibold">Cost</th><th scope="col" class="text-left py-2 px-3 font-semibold">Tourist-Friendly?</th></tr></thead>
             <tbody>
-              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Metro</td><td class="py-2 px-3">Airport, cross-city</td><td class="py-2 px-3 text-right">¥2–7</td><td class="py-2 px-3"><span class="text-green-600 font-medium">★★★★★</span></td></tr>
-              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Didi</td><td class="py-2 px-3">Door-to-door, any trip</td><td class="py-2 px-3 text-right">¥15–150</td><td class="py-2 px-3"><span class="text-green-600 font-medium">★★★★★</span></td></tr>
-              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Bus</td><td class="py-2 px-3">Budget, Laoshan (304)</td><td class="py-2 px-3 text-right">¥1–2</td><td class="py-2 px-3"><span class="text-amber-600 font-medium">★★★☆☆</span></td></tr>
-              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Taxi</td><td class="py-2 px-3">Short trips, no app</td><td class="py-2 px-3 text-right">¥10–60</td><td class="py-2 px-3"><span class="text-amber-600 font-medium">★★★☆☆</span></td></tr>
-              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Walking</td><td class="py-2 px-3">Old Town sightseeing</td><td class="py-2 px-3 text-right">Free</td><td class="py-2 px-3"><span class="text-green-600 font-medium">★★★★★</span></td></tr>
-              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Shared bike</td><td class="py-2 px-3">Coastal rides, short hops</td><td class="py-2 px-3 text-right">¥1.50/30min</td><td class="py-2 px-3"><span class="text-green-600 font-medium">★★★★☆</span></td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Metro</td><td class="py-2 px-3">Airport, cross-city</td><td class="py-2 px-3 text-right">¥2–7</td><td class="py-2 px-3"><span class="text-green-700 font-medium">★★★★★</span></td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Didi</td><td class="py-2 px-3">Door-to-door, any trip</td><td class="py-2 px-3 text-right">¥15–150</td><td class="py-2 px-3"><span class="text-green-700 font-medium">★★★★★</span></td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Bus</td><td class="py-2 px-3">Budget, Laoshan (304)</td><td class="py-2 px-3 text-right">¥1–2</td><td class="py-2 px-3"><span class="text-amber-700 font-medium">★★★☆☆</span></td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Taxi</td><td class="py-2 px-3">Short trips, no app</td><td class="py-2 px-3 text-right">¥10–60</td><td class="py-2 px-3"><span class="text-amber-700 font-medium">★★★☆☆</span></td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Walking</td><td class="py-2 px-3">Old Town sightseeing</td><td class="py-2 px-3 text-right">Free</td><td class="py-2 px-3"><span class="text-green-700 font-medium">★★★★★</span></td></tr>
+              <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Shared bike</td><td class="py-2 px-3">Coastal rides, short hops</td><td class="py-2 px-3 text-right">¥1.50/30min</td><td class="py-2 px-3"><span class="text-green-700 font-medium">★★★★☆</span></td></tr>
             </tbody>
           </table>
         </div>

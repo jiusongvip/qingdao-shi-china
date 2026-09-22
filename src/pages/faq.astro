@@ -28,6 +28,7 @@ const faqs = [
       <p class="body-lg mb-10 max-w-[65ch]">Everything first-time visitors ask. From visas and payments to safety and what to pack.</p>
 
       <!-- FAQ grid -->
+      <h2 class="h3 mb-4">Top Questions From First-Time Visitors</h2>
       <div class="grid md:grid-cols-2 gap-4 mb-12">
         {faqs.map(([q, a]) => (
           <details class="card group p-5 cursor-pointer">
@@ -46,7 +47,7 @@ const faqs = [
         <p class="caption mb-6">Which option is right for your Qingdao trip?</p>
         <div class="overflow-x-auto">
           <table class="w-full text-sm border-collapse">
-            <thead><tr class="border-b border-[var(--color-border)]"><th class="text-left py-2 px-3 font-semibold"></th><th class="text-left py-2 px-3 font-semibold">Airport SIM</th><th class="text-left py-2 px-3 font-semibold">eSIM (Airalo/Nomad)</th><th class="text-left py-2 px-3 font-semibold">China Unicom Store</th></tr></thead>
+            <thead><tr class="border-b border-[var(--color-border)]"><th scope="col" class="text-left py-2 px-3 font-semibold"></th><th scope="col" class="text-left py-2 px-3 font-semibold">Airport SIM</th><th scope="col" class="text-left py-2 px-3 font-semibold">eSIM (Airalo/Nomad)</th><th scope="col" class="text-left py-2 px-3 font-semibold">China Unicom Store</th></tr></thead>
             <tbody>
               <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Price</td><td class="py-2 px-3">~&#165;100 for 20GB</td><td class="py-2 px-3">$8-25 for 3-10GB</td><td class="py-2 px-3">&#165;50-150/month</td></tr>
               <tr class="border-b border-[var(--color-border)]"><td class="py-2 px-3 font-medium">Setup</td><td class="py-2 px-3">Buy at airport kiosk</td><td class="py-2 px-3 text-[var(--color-accent)] font-medium">Activate before departure</td><td class="py-2 px-3">Visit store with passport</td></tr>

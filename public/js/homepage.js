@@ -98,17 +98,21 @@ if (document.getElementById("homepage-map") && typeof L !== "undefined") {
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: "&copy; OpenStreetMap", maxZoom: 18 }).addTo(map);
 
   function makeIcon(color) {
-    return L.divIcon({ className: "", html: '<div style="width:22px;height:22px;border-radius:50%;background:' + color + ';border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>', iconSize: [22, 22], iconAnchor: [11, 11], popupAnchor: [0, -12] });
+    return L.divIcon({ className: "", html: '<div style="width:28px;height:28px;border-radius:50%;background:' + color + ';border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>', iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14] });
   }
 
   function addMarkers(data, color) {
     var group = L.layerGroup();
     data.forEach(function(item) {
-      L.marker([item.lat, item.lng], { icon: makeIcon(color) })
-        .bindPopup("<h4>" + item.name + "</h4><p>" + item.desc + "</p>")
+      L.marker([item.lat, item.lng], { icon: makeIcon(color), title: item.name, alt: item.name })
+        .bindPopup("<strong class='popup-title'>" + item.name + "</strong><p>" + item.desc + "</p>")
         .addTo(group);
     });
     group.addTo(map);
+    group.eachLayer(function (l) {
+      var el = l.getElement();
+      if (el) { el.setAttribute('aria-label', l.options.title || 'Map marker'); el.setAttribute('role', 'button'); }
+    });
     return group;
   }
 
