@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.qingdao-shi-china.com/sitemap.xml
+Sitemap: https://www.qingdao-shi-china.com/sitemap-index.xml
 
 User-agent: GPTBot
 Allow: /
