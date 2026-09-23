@@ -95,6 +95,9 @@
 // Map on homepage
 if (document.getElementById("homepage-map") && typeof L !== "undefined") {
   var map = L.map("homepage-map").setView([36.067, 120.383], 12);
+  var mapEl = document.getElementById("homepage-map");
+  if (mapEl) { mapEl.setAttribute("role", "region"); mapEl.setAttribute("aria-label", "Interactive map of Qingdao attractions, food and hotels"); }
+  map.on("tileload", function (e) { e.tile.alt = "Qingdao street map tile"; });
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: "&copy; OpenStreetMap", maxZoom: 18 }).addTo(map);
 
   function makeIcon(color) {
