@@ -44,7 +44,7 @@ const foodPicks: FoodPick[] = [
 ];
 
 const faqItems = [
-  { q: "Do I need a visa to visit Qingdao?", a: "Most foreign visitors need a Chinese visa. Qingdao offers 144-hour visa-free transit for eligible nationalities arriving at Qingdao Liuting Airport and departing to a third country. Check the latest policy before booking." },
+  { q: "Do I need a visa to visit Qingdao?", a: "Many nationalities can use China's 240-hour (10-day) visa-free transit, covering Qingdao Jiaodong International Airport for travelers continuing to a third country — currently nationals of 57 countries. Otherwise you need a Chinese visa. Check the latest policy before booking." },
   { q: "How do I pay for things in Qingdao?", a: "Alipay and WeChat Pay dominate. Both now support linking foreign Visa and Mastercard. Set up Alipay before arriving: download the app, register with passport, link your card. Cash is accepted but increasingly rare." },
   { q: "Do I need a VPN in China?", a: "Yes. Google, Gmail, Instagram, WhatsApp, and many Western sites are blocked. Install a VPN on all devices before your flight. Test it before you leave. ExpressVPN and Astrill are commonly recommended by travelers." },
   { q: "Is Qingdao safe for tourists?", a: "Very safe. Violent crime against tourists is extremely rare. The main risk is taxi scams at the airport (use Didi instead) and pickpocketing in crowded areas during the Beer Festival." },
@@ -127,7 +127,7 @@ const getSlug = (n: string) => {
         </div>
         <div class="card p-5">
           <h3 class="text-sm font-semibold mb-2">Do foreigners need a visa?</h3>
-          <p class="caption text-xs leading-relaxed">Most nationalities need a Chinese tourist visa (L). Qingdao offers 144-hour visa-free transit at the airport for eligible countries when continuing to a third destination. <a href="/faq/" class="text-[var(--color-accent)] hover:underline font-medium">Full visa FAQ</a>.</p>
+          <p class="caption text-xs leading-relaxed">Many nationalities now qualify for China's 240-hour visa-free transit — per the <a href="https://en.nia.gov.cn/n147418/n147463/c183412/content.html" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline font-medium">National Immigration Administration</a>, it applies to "nationals of 57 countries including Russia, the United Kingdom and the United States" transiting to a third country. Otherwise most visitors need a tourist (L) visa. <a href="/faq/" class="text-[var(--color-accent)] hover:underline font-medium">Full visa FAQ</a>.</p>
         </div>
       </div>
     </div>
@@ -174,7 +174,7 @@ const getSlug = (n: string) => {
       <h2 class="mb-6">Three reasons travelers keep coming back</h2>
       <div class="space-y-4 body leading-relaxed text-[var(--color-text-secondary)]">
         <p><strong>It is the rare Chinese city where you can surf in the morning, drink world-famous beer at its source by lunch, and wander cobblestone streets lined with Bavarian architecture by afternoon.</strong> Qingdao (pronounced "ching-dow") sits on a peninsula jutting into the Yellow Sea in Shandong Province, about halfway between Beijing and Shanghai. Its coastline runs for over 860 kilometers, dotted with beaches, rocky headlands, and fishing villages that feel worlds away from China’s megacities.</p>
-        <p>The city wears its colonial past openly. From 1898 to 1914, Qingdao was a German concession, and the legacy is everywhere: St. Michael’s Cathedral, the Governor’s Mansion, and entire neighborhoods of European-style villas with red-tiled roofs. The Germans also started what became <a href="/qingdao-beer/" class="text-[var(--color-accent)] hover:underline font-medium">Tsingtao Brewery</a> in 1903. Today, Tsingtao is China’s most famous beer export, and the city celebrates it every August with one of Asia’s largest beer festivals.</p>
+        <p>The city wears its colonial past openly. From 1898 to 1914, Qingdao was a German concession, and the legacy is everywhere: St. Michael’s Cathedral, the Governor’s Mansion, and entire neighborhoods of European-style villas with red-tiled roofs. The Germans also started what became <a href="/qingdao-beer/" class="text-[var(--color-accent)] hover:underline font-medium">Tsingtao Brewery</a> in 1903 — per the brewery's own <a href="https://www.tsingtao.com/We-Are-TSingtao.html" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline font-medium">official company history</a>, it "was established in 1903 by German and British merchants as Germania-Brauerei Tsingtao Co., Ltd." Today, Tsingtao is China’s most famous beer export, and the city celebrates it every August with one of Asia’s largest beer festivals.</p>
         <p>For nature lovers, <a href="#attractions" class="text-[var(--color-accent)] hover:underline font-medium">Laoshan Mountain</a> rises abruptly from the coast just east of town — one of China’s sacred Taoist peaks with temples, hiking trails, and sweeping views of the sea. On clear days you can hike up in the morning and be back on the beach by late afternoon. Qingdao is one of the few places in China where a hiking holiday and a beach holiday are the same trip.</p>
         <p>Compared to Beijing or Shanghai, Qingdao moves at a gentler pace. Locals call it a city for living, not just for working. You will see people flying kites at May Fourth Square, families digging clams at low tide, and groups of friends gathered around tables of grilled seafood and fresh draft beer. It is an excellent introduction to China for first-time visitors and a welcome breather for seasoned travelers.</p>
       </div>
@@ -336,7 +336,7 @@ const getSlug = (n: string) => {
       </div>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="food-grid">
-      {foodPicks.map(f => { return (<Fragment><div class="card p-5" data-type={f.type}><h4 class="text-sm font-semibold mb-1">{f.name}</h4><p class="caption text-xs mb-2">{areaLabel(f.area)}</p><p class="caption text-xs leading-relaxed mb-3">{f.desc}</p><div class="flex items-center gap-2"><span class="tag">{foodTypeLabel(f.type)}</span><span class="caption">{f.price}</span></div></div></Fragment>); })}
+      {foodPicks.map(f => { return (<Fragment><div class="card p-5" data-type={f.type}><h3 class="text-sm font-semibold mb-1">{f.name}</h3><p class="caption text-xs mb-2">{areaLabel(f.area)}</p><p class="caption text-xs leading-relaxed mb-3">{f.desc}</p><div class="flex items-center gap-2"><span class="tag">{foodTypeLabel(f.type)}</span><span class="caption">{f.price}</span></div></div></Fragment>); })}
     </div>
   </div></section>
 
@@ -348,11 +348,11 @@ const getSlug = (n: string) => {
       {["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].map(m => { return (<button class="btn-outline text-xs px-3 py-1.5 data-[active]:bg-[var(--color-accent)]  data-[active]:border-[var(--color-accent)]" data-month={m} data-active={m === "Jun" ? "" : undefined}>{m}</button>); })}
     </div>
     <div class="grid md:grid-cols-2 gap-6" id="packing-output">
-      <div class="card p-5" id="packing-clothes"><h4 class="text-sm font-semibold mb-3">Clothing</h4><ul class="caption space-y-1.5 list-disc list-inside" id="packing-clothes-list"><li>Light breathable clothing</li><li>Swimsuit and beach towel</li><li>Hat and sunglasses</li><li>Light rain jacket (summer showers)</li></ul></div>
-      <div class="card p-5" id="packing-gear"><h4 class="text-sm font-semibold mb-3">Gear & Essentials</h4><ul class="caption space-y-1.5 list-disc list-inside" id="packing-gear-list"><li>Mosquito repellent</li><li>Sunscreen (hard to find in China)</li><li>Portable fan or cooling towel</li><li>Umbrella</li></ul></div>
+      <div class="card p-5" id="packing-clothes"><h3 class="text-sm font-semibold mb-3">Clothing</h3><ul class="caption space-y-1.5 list-disc list-inside" id="packing-clothes-list"><li>Light breathable clothing</li><li>Swimsuit and beach towel</li><li>Hat and sunglasses</li><li>Light rain jacket (summer showers)</li></ul></div>
+      <div class="card p-5" id="packing-gear"><h3 class="text-sm font-semibold mb-3">Gear & Essentials</h3><ul class="caption space-y-1.5 list-disc list-inside" id="packing-gear-list"><li>Mosquito repellent</li><li>Sunscreen (hard to find in China)</li><li>Portable fan or cooling towel</li><li>Umbrella</li></ul></div>
     </div>
     <div class="card p-5 mt-6" id="packing-always">
-      <h4 class="text-sm font-semibold mb-2">Always Pack (any month)</h4>
+      <h3 class="text-sm font-semibold mb-2">Always Pack (any month)</h3>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-2 caption">
         <span>Tissues (public toilets lack paper)</span><span>Hand sanitizer</span><span>Power adapter (Type A/C/I)</span><span>VPN pre-installed on all devices</span>
         <span>Copies of passport + visa</span><span>Imodium</span><span>Portable battery pack</span><span>Reusable water bottle</span>
@@ -379,27 +379,28 @@ const getSlug = (n: string) => {
     <div class="mb-10"><p class="tag mb-3">Things to Know Before You Go</p><h2>What to prepare before your flight</h2><p class="body mt-3 max-w-[65ch]">China is not a destination you can wing. Some things must be set up before you board the plane. Here is the checklist experienced travelers swear by — the stuff generic travel sites gloss over.</p></div>
     <div class="grid md:grid-cols-2 gap-4">
       <div class="card p-5">
-        <h4 class="text-sm font-semibold mb-2">☎️ SIM Card or eSIM</h4>
+        <h3 class="text-sm font-semibold mb-2">☎️ SIM Card or eSIM</h3>
         <p class="caption text-xs leading-relaxed">Buy a physical SIM at Qingdao Airport (China Unicom, around ¥100 for 20GB). Alternatively, activate an eSIM (Airalo, Nomad, Holafly) <em>before</em> you leave home. Hotel WiFi in China usually requires a Chinese phone number for SMS verification, so having your own data is essential.</p>
       </div>
       <div class="card p-5">
-        <h4 class="text-sm font-semibold mb-2">💰 Alipay &amp; WeChat Pay</h4>
+        <h3 class="text-sm font-semibold mb-2">💰 Alipay &amp; WeChat Pay</h3>
         <p class="caption text-xs leading-relaxed">Download Alipay <em>before</em> your flight. Register with your passport, link a Visa or Mastercard. This is how you pay for everything: street food, taxis, attraction tickets, even toilet paper at public restrooms. Cash is increasingly refused. Set up WeChat Pay as a backup — you will want both.</p>
       </div>
       <div class="card p-5">
-        <h4 class="text-sm font-semibold mb-2">🔒 VPN (non-negotiable)</h4>
+        <h3 class="text-sm font-semibold mb-2">🔒 VPN (non-negotiable)</h3>
         <p class="caption text-xs leading-relaxed">Google, Gmail, Instagram, WhatsApp, and most Western sites are blocked in China. Install a VPN on every device before departure. Once you land, VPN websites will be unreachable. ExpressVPN, Astrill, and LetsVPN are the most reliable inside China. Test it at the airport gate <em>before</em> you leave the terminal.</p>
       </div>
       <div class="card p-5">
-        <h4 class="text-sm font-semibold mb-2">💬 Language Barrier</h4>
+        <h3 class="text-sm font-semibold mb-2">💬 Language Barrier</h3>
         <p class="caption text-xs leading-relaxed">English is limited outside hotel lobbies and major attractions. Download Google Translate with the offline Chinese language pack. Screenshot these key phrases: “Please take me to…” (qing dai wo qu…), “I am allergic to…” (wo dui… guomin), “Where is the toilet?” (cesuo zai nar).</p>
       </div>
       <div class="card p-5">
-        <h4 class="text-sm font-semibold mb-2">📄 Visa &amp; Documents</h4>
-        <p class="caption text-xs leading-relaxed">Most foreign nationals need a Chinese tourist visa (L) before travel. Qingdao offers 144-hour visa-free transit for eligible countries if you arrive at Qingdao Airport and depart to a third country. Carry printed copies of your hotel bookings and return flight — immigration may ask. <a href="/faq/" class="text-[var(--color-accent)] hover:underline font-medium">Full visa FAQ</a></p>
+        <h3 class="text-sm font-semibold mb-2">📄 Visa &amp; Documents</h3>
+        <p class="caption text-xs leading-relaxed">Many travelers no longer need a visa at all: China's 240-hour visa-free transit covers Qingdao for nationals of 57 countries arriving via the airport and continuing to a third country. Otherwise you will want a tourist (L) visa. Carry printed copies of your hotel bookings and onward flight — immigration may ask. <a href="/faq/" class="text-[var(--color-accent)] hover:underline font-medium">Full visa FAQ</a></p>
+        <blockquote class="caption text-xs italic leading-relaxed mt-3 pl-3 border-l-2 border-[var(--color-accent)]">"Nationals of these countries, who need to transit through China to third countries or regions, may enter visa-free through any of the designated 65 open exit-entry ports&#8230; and stay in the permitted areas for no more than 10 days." — <a href="https://en.nia.gov.cn/n147418/n147463/c183412/content.html" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline">National Immigration Administration of China</a></blockquote>
       </div>
       <div class="card p-5">
-        <h4 class="text-sm font-semibold mb-2">🎒 What to Always Pack</h4>
+        <h3 class="text-sm font-semibold mb-2">🎒 What to Always Pack</h3>
         <p class="caption text-xs leading-relaxed">Pocket tissues (public toilets rarely have paper), hand sanitizer, Imodium (stomach medicine — hard to find locally), sunscreen (imported brands are rare and expensive in China), a universal power adapter (China uses Type A/C/I), and a portable battery pack for long days out. See the <a href="#packing-section" class="text-[var(--color-accent)] hover:underline font-medium">packing guide</a> for month-specific items.</p>
       </div>
     </div>
@@ -540,9 +541,10 @@ const getSlug = (n: string) => {
     <div class="container max-w-3xl">
       <h2 class="h3 mb-4">Sources &amp; notes</h2>
       <ul class="caption text-xs leading-relaxed text-[var(--color-text-secondary)] space-y-2 list-disc list-inside">
-        <li>Climate, geography, population, and history details are cross-checked against Encyclopedia Britannica's Qingdao article and Wikimedia sources (accessed August 2026).</li>
+        <li>Climate, geography, population, and history details are cross-checked against <a href="https://www.britannica.com/place/Qingdao" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline">Encyclopedia Britannica's Qingdao entry</a> (accessed September 2026).</li>
+        <li>Visa-free transit rules are quoted directly from the <a href="https://en.nia.gov.cn/n147418/n147463/c183412/content.html" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline">National Immigration Administration's visa-free transit policy page</a> (updated 2026-08-20). Rules change frequently; verify before travel.</li>
+        <li>Tsingtao Brewery's founding date and original name follow the <a href="https://www.tsingtao.com/We-Are-TSingtao.html" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline">brewery's official company profile</a>.</li>
         <li>Hotel listings and prices are illustrative ranges aggregated from major booking platforms &mdash; always confirm availability and rates before booking.</li>
-        <li>Visa and visa-free-transit rules change frequently; verify current policy with the Chinese Embassy or official sources before travel.</li>
         <li>Prices, opening hours, and attraction details were last reviewed August 2026 based on multiple on-the-ground visits and ongoing research.</li>
       </ul>
     </div>

@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro"
+
+const email = "hello@qingdao-shi-china.com";
+---
+<Layout title="About This Qingdao Travel Guide — Team &amp; Editorial Policy" description="Who is behind this Qingdao travel guide, how our content is researched and tested, our editorial standards and independence policy, and how to contact the team.">
+  <section class="section">
+    <div class="container max-w-3xl">
+      <p class="tag mb-3">About</p>
+      <h1 class="mb-2">Who writes this guide</h1>
+      <p class="body-lg mb-10 max-w-[65ch]">This site is maintained by The Qingdao Travel Guide Team &mdash; a small group of travelers and residents in Qingdao, Shandong, China, who write independently about visiting the city.</p>
+
+      <h2 class="h3 mb-3">Why we built it</h2>
+      <p class="body leading-relaxed mb-8">Most English-language guides to Qingdao recycle the same paragraphs: a line about the Beer Museum, a line about the beach, and nothing you can actually use on the ground. We started this guide to answer the questions real first-time visitors ask &mdash; what to do in the first hour after landing, which neighborhood to book, whether your phone will work &mdash; with details verified on the ground rather than copied from press kits.</p>
+
+      <h2 class="h3 mb-3">How we research and test</h2>
+      <ul class="body space-y-3 mb-8 list-disc list-inside">
+        <li><strong>On-the-ground checks.</strong> Attractions, restaurants, and transit routes described here were visited in person, most recently during 2025&ndash;2026. Opening hours, ticket prices, and metro details are re-checked on each update.</li>
+        <li><strong>Official primary sources.</strong> Visa and entry policy is quoted from the <a href="https://en.nia.gov.cn/n147418/n147463/c183412/content.html" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline">National Immigration Administration of China</a>; brewery history from <a href="https://www.tsingtao.com/We-Are-TSingtao.html" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline">Tsingtao Brewery's official company profile</a>; general geography and history cross-checked against <a href="https://www.britannica.com/place/Qingdao" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline">Encyclopedia Britannica's Qingdao entry</a>.</li>
+        <li><strong>Transparent uncertainty.</strong> Where prices fluctuate or policies change often, we say so and date the information. Every guide page carries a "last reviewed" note.</li>
+      </ul>
+
+      <h2 class="h3 mb-3">Independence &amp; disclosure</h2>
+      <p class="body leading-relaxed mb-8">We are not paid or sponsored by any hotel, restaurant, brewery, or tourism board for what we recommend or where it appears. We have no affiliate links. Views are our own. Hotel price ranges shown are illustrative averages from major booking platforms, not endorsements or booked rates.</p>
+
+      <h2 class="h3 mb-3">Corrections &amp; contact</h2>
+      <p class="body leading-relaxed mb-4">Something outdated or wrong? We want to know. Details like a metro exit number, a ticket price, or a closing time genuinely help future readers.</p>
+      <p class="body leading-relaxed mb-10">Email the team at <a href={`mailto:${email}`} class="text-[var(--color-accent)] hover:underline font-medium">{email}</a>. We read everything and correct verified errors on the next update.</p>
+
+      <div class="card p-6">
+        <p class="caption">This guide is updated regularly. Editorial standards and sources are disclosed on every guide page. Last site-wide review: August 2026.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

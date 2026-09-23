@@ -142,6 +142,7 @@ if (pageType === "TouristDestination") {
     "name": "Qingdao Travel Guide",
     "url": siteUrl,
     "logo": { "@type": "ImageObject", "url": siteUrl + "/favicon.svg" },
+    "email": "hello@qingdao-shi-china.com",
     "sameAs": [],
   })}></script>
 
@@ -230,15 +231,21 @@ if (pageType === "TouristDestination") {
           <div class="flex flex-col gap-2">
             <a href="/faq/" class="caption hover:text-[var(--color-text)] transition-colors">FAQ</a>
             <a href="/first-hour/" class="caption font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors">First Hour Guide</a>
+            <a href="/about/" class="caption hover:text-[var(--color-text)] transition-colors">About &amp; Editorial Policy</a>
+            <a href="mailto:hello@qingdao-shi-china.com" class="caption hover:text-[var(--color-text)] transition-colors">Contact</a>
           </div>
         </div>
       </div>
       <div class="mt-12 pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="caption">Qingdao Travel Guide &copy; 2026. Made for independent travelers.</p>
-        <p class="caption">qingdao-shi-china.com</p>
+        <div class="flex gap-4">
+          <a href="/about/" class="caption hover:text-[var(--color-text)] transition-colors">About</a>
+          <a href="/privacy/" class="caption hover:text-[var(--color-text)] transition-colors">Privacy &amp; Terms</a>
+          <a href="mailto:hello@qingdao-shi-china.com" class="caption hover:text-[var(--color-text)] transition-colors">Contact</a>
+        </div>
       </div>
       <div class="mt-6 pt-6 border-t border-[var(--color-border)]">
-        <p class="caption leading-relaxed text-[var(--color-text-tertiary)]">This guide is written and edited by The Qingdao Travel Guide Team &mdash; travelers and residents in Qingdao, Shandong, China. Last updated {dateModified}. Hotel prices, attraction times, and transit details change, so always confirm before you travel. Views are independent; we are not paid for placements.</p>
+        <p class="caption leading-relaxed text-[var(--color-text-tertiary)]">This guide is written and edited by <a href="/about/" class="hover:text-[var(--color-text)] underline decoration-[var(--color-border)]">The Qingdao Travel Guide Team</a> &mdash; travelers and residents in Qingdao, Shandong, China. Last updated {dateModified}. Hotel prices, attraction times, and transit details change, so always confirm before you travel. Views are independent; we are not paid for placements.</p>
       </div>
     </div>
   </footer>

@@ -24,17 +24,17 @@ const routes = [
           </div>
           <div class="grid md:grid-cols-3 gap-6">
             <div>
-              <h4 class="text-sm font-semibold mb-3">Stops</h4>
+              <h3 class="text-sm font-semibold mb-3">Stops</h3>
               <ol class="caption space-y-2 list-decimal list-inside">
                 {r.stops.map(s => <li>{s}</li>)}
               </ol>
             </div>
             <div>
-              <h4 class="text-sm font-semibold mb-3">Tips</h4>
+              <h3 class="text-sm font-semibold mb-3">Tips</h3>
               <p class="caption">{r.tips}</p>
             </div>
             <div>
-              <h4 class="text-sm font-semibold mb-3">Details</h4>
+              <h3 class="text-sm font-semibold mb-3">Details</h3>
               <div class="flex flex-col gap-2 caption">
                 <p><span class="font-medium">Start:</span> {r.start}</p>
                 <p><span class="font-medium">Difficulty:</span> <span class="tag">{r.difficulty}</span></p>

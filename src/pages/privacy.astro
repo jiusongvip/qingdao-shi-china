@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro"
+
+const email = "hello@qingdao-shi-china.com";
+---
+<Layout title="Privacy Policy &amp; Terms of Use — Qingdao Travel Guide" description="How this static Qingdao travel guide handles your data: analytics cookies, third-party map tiles, no accounts, no ads, no personal data sold. Plus terms of use.">
+  <section class="section">
+    <div class="container max-w-3xl">
+      <p class="tag mb-3">Legal</p>
+      <h1 class="mb-2">Privacy Policy &amp; Terms of Use</h1>
+      <p class="body-lg mb-10 max-w-[65ch]">Plain-language version: this is a static travel guide. We collect almost nothing, show no ads, and never sell data.</p>
+
+      <h2 class="h3 mb-3">What we collect</h2>
+      <ul class="body space-y-3 mb-8 list-disc list-inside">
+        <li><strong>Analytics.</strong> This site uses Google Analytics (gtag.js) with cookie-based measurement. It records approximate location (country/region), device and browser type, pages viewed, and referral source. We do not use it to identify individual visitors, and we do not link it to anything else about you.</li>
+        <li><strong>Server logs.</strong> Our hosting provider (Cloudflare Pages) keeps standard, short-lived request logs (IP address, user agent, requested URL) for security and abuse prevention.</li>
+        <li><strong>No accounts, no forms, no payment data.</strong> There is nothing on this site that asks you to submit personal information.</li>
+      </ul>
+
+      <h2 class="h3 mb-3">Third-party content on pages</h2>
+      <p class="body leading-relaxed mb-8">The homepage map loads street tiles directly from OpenStreetMap's public tile servers, so your browser makes requests to <em>tile.openstreetmap.org</em> when the map is visible. The text-to-speech buttons use your own browser's built-in speech engine and send nothing anywhere.</p>
+
+      <h2 class="h3 mb-3">Your choices</h2>
+      <p class="body leading-relaxed mb-8">You can block or delete cookies in your browser settings at any time, and standard analytics opt-out browser add-ons are available from your browser's extension store. Blocking analytics cookies does not affect reading the guide.</p>
+
+      <h2 class="h3 mb-3">Terms of use</h2>
+      <ul class="body space-y-3 mb-8 list-disc list-inside">
+        <li>All information is provided for general guidance, without warranty. Visa rules, prices, opening hours, and transport details change — confirm with official sources before you travel.</li>
+        <li>You may share links to our pages freely. Republishing substantial parts of the guides requires written permission by email.</li>
+        <li>External sites linked from these pages have their own policies; we are not responsible for them.</li>
+      </ul>
+
+      <h2 class="h3 mb-3">Contact</h2>
+      <p class="body leading-relaxed mb-4">Questions about privacy or anything else: <a href={`mailto:${email}`} class="text-[var(--color-accent)] hover:underline font-medium">{email}</a>.</p>
+      <p class="caption">Last updated: September 2026.</p>
+    </div>
+  </section>
+</Layout>
